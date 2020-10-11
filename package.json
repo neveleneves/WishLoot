@@ -1,0 +1,26 @@
+{
+  "name": "wishloot",
+  "version": "1.0.0",
+  "description": "Personal wishlist for sneakerheads, collectors and stylish people.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --open --mode development",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neveleneves/WishLoot.git"
+  },
+  "author": "Max Nikonov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/neveleneves/WishLoot/issues"
+  },
+  "homepage": "https://github.com/neveleneves/WishLoot#readme",
+  "devDependencies": {
+    "path": "^0.12.7",
+    "webpack": "^5.0.0",
+    "webpack-cli": "^4.0.0",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
