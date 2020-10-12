@@ -15,7 +15,8 @@ module.exports = {
             test: /\.js$/,
             loader: 'babel-loader',
             exclude: '/node_modules'
-        }, {
+        }, 
+        {
             test: /\.css$/,
             use: [
                 MiniCssExtractPlugin.loader,
@@ -31,7 +32,7 @@ module.exports = {
         }]
     },
     devServer: {
-        overlay: true
+        overlay: true,
     },
     plugins: [
         new MiniCssExtractPlugin({
