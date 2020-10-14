@@ -31,9 +31,6 @@ module.exports = {
             ]
         }]
     },
-    devServer: {
-        overlay: true,
-    },
     plugins: [
         new MiniCssExtractPlugin({
             filename: "[name].css"

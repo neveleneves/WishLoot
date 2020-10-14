@@ -4,8 +4,8 @@
   "description": "Personal wishlist for sneakerheads, collectors and stylish people.",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --open --mode development",
-    "build": "webpack --mode production"
+    "dev": "webpack-dev-server --open --config webpack.dev.conf.js",
+    "build": "webpack --config webpack.build.conf.js"
   },
   "repository": {
     "type": "git",
@@ -32,7 +32,8 @@
     "style-loader": "^2.0.0",
     "webpack": "^5.0.0",
     "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^5.2.0"
   },
   "dependencies": {}
 }
