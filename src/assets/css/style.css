@@ -4,7 +4,3 @@ html {
 *, *::before, *::after {
     box-sizing: inherit;
 }
-.lorem {
-    font-size: 60px;
-    font-family: Monserrat Bold;
-}
