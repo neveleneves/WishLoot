@@ -1,5 +1,6 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const path = require('path')
+const fs = require('fs')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
@@ -9,6 +10,9 @@ const PATHS = {
     dist: path.join(__dirname, '../dist'),
     assets: 'assets/'
 }
+
+const PAGES_DIR = `${PATHS.src}/html`
+const PAGES = fs.readdirSync(PAGES_DIR).filter(fileName => fileName.endsWith('.html'));
 
 module.exports = {
     externals: {
@@ -75,11 +79,11 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: `${PATHS.assets}css/[name].[hash].css`
         }),
-        new HtmlWebpackPlugin({
+        ...PAGES.map(page => new HtmlWebpackPlugin({
             hash: false,
-            template: `${PATHS.src}/index.html`,
-            filename: './index.html'
-        }),
+            template: `${PAGES_DIR}/${page}`,
+            filename: `./${page}`
+        })),
         new CopyWebpackPlugin({
             patterns: [
                 {from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img`},
