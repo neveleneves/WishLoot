@@ -1,6 +1,5 @@
 
-import './css/reset.css'
-import './css/style.css'
-import './js/example'
-
-console.log("!232222222222222222222222222222232");
+import './assets/css/reset.css'
+import './assets/css/style.css'
+//import './assets/css/fonts.css'
+//import './js/example'
