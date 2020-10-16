@@ -12,7 +12,7 @@ body {
     line-height: 18px;
     font-weight: normal;
     color: #303030;
-    background-color: black;
+    background-color: #303030;
 }
 .header{
     position: fixed;
@@ -28,19 +28,20 @@ body {
     justify-content: space-between;
 }
 .header-logo-link {
+    display: flex;
     font-family: Montserrat Alternates;
     font-style: normal;
     font-weight: bold;
     font-size: 30px;
     line-height: 18px;
-    display: flex;
     align-items: center;
     text-align: center;
+    text-decoration: none;
     color: #ffffff;
 }
 .header-wrapper-menu {
-    max-width: 1651px;
-    height: 41px;
+    max-width: 1640px;
+    height: 30px;
     margin: 0 auto;
     margin-top: 35px;
 }
@@ -49,11 +50,14 @@ body {
     flex-wrap: wrap;
 }
 .header-item{ 
-    margin-right: 65px;
+    width: 122px;
+    text-align: center;
+    margin-right: 20px;
 }
-.header-item:last-child {
+.header-item:last-child{ 
     margin-right: 0px;
 }
+
 .header-link{
     font-family: Montserrat;
     font-style: normal;
@@ -63,18 +67,37 @@ body {
     color: #ffffff;
     text-decoration: none;
 }
-.header-link:hover, .header-link:focus,.header-link:active {
+.header-link:hover, .header-link:focus,.header-link:active, .header-logo-link:active {
     opacity: .75;
 }
 .line-menu
 {
     margin-top: 15px;
     margin-left: auto;
-    width: 547px;
+    max-width: 547px;
     max-height: 0px;
     opacity: 0.5;
     border: 1px solid #A1A1A1;
 }
+.pick-line-menu
+{ 
+    max-width: 122px;
+    border: 2px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+
+.intro {
+    
+}
+
+
+
+
+
+
+
+
+
 
 
 
