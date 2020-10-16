@@ -12,12 +12,20 @@ body {
     line-height: 18px;
     font-weight: normal;
     color: #303030;
-}
-
-.header-wrapper{
-    max-width: 1651px;
-    margin: 0 auto;
     background-color: black;
+}
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+}
+.header-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
 }
 .header-logo-link {
     font-family: Montserrat Alternates;
@@ -30,11 +38,43 @@ body {
     text-align: center;
     color: #ffffff;
 }
-
-
-
-
-
+.header-wrapper-menu {
+    max-width: 1651px;
+    height: 41px;
+    margin: 0 auto;
+    margin-top: 35px;
+}
+.header-list{
+    display: flex;
+    flex-wrap: wrap;
+}
+.header-item{ 
+    margin-right: 65px;
+}
+.header-item:last-child {
+    margin-right: 0px;
+}
+.header-link{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 18px;
+    color: #ffffff;
+    text-decoration: none;
+}
+.header-link:hover, .header-link:focus,.header-link:active {
+    opacity: .75;
+}
+.line-menu
+{
+    margin-top: 15px;
+    margin-left: auto;
+    width: 547px;
+    max-height: 0px;
+    opacity: 0.5;
+    border: 1px solid #A1A1A1;
+}
 
 
 
