@@ -1,10 +1,10 @@
+/* Common Styles Start */
 html {
     box-sizing: border-box;
 }
 *, *::before, *::after {
     box-sizing: inherit;
 }
-
 body {
     font-family: Montserrat;
     font-style: normal;
@@ -13,7 +13,11 @@ body {
     font-weight: normal;
     color: #303030;
     background-color: #303030;
+    height: 100vh;
 }
+/* Common Styles End */
+
+/* Header Styles Start */
 .header{
     position: fixed;
     top: 0;
@@ -40,7 +44,7 @@ body {
     color: #ffffff;
 }
 .header-wrapper-menu {
-    max-width: 1640px;
+    max-width: 1678px;
     height: 30px;
     margin: 0 auto;
     margin-top: 35px;
@@ -57,7 +61,6 @@ body {
 .header-item:last-child{ 
     margin-right: 0px;
 }
-
 .header-link{
     font-family: Montserrat;
     font-style: normal;
@@ -70,8 +73,7 @@ body {
 .header-link:hover, .header-link:focus,.header-link:active, .header-logo-link:active {
     opacity: .75;
 }
-.line-menu
-{
+.line-menu{
     margin-top: 15px;
     margin-left: auto;
     max-width: 547px;
@@ -79,15 +81,44 @@ body {
     opacity: 0.5;
     border: 1px solid #A1A1A1;
 }
-.pick-line-menu
-{ 
+.pick-line-menu{ 
     max-width: 122px;
     border: 2px solid #FFFFFF;
     background-color: #FFFFFF;
 }
+/* Header Styles End */
 
-.intro {
-    
+/* Intro-page Styles Start */
+.intro-block {
+    float: left;
+    height: 100vh;
+}
+.left-block{
+    width: 59%;
+    background-color: black;
+}
+.right-block {
+    width: 41%;
+    background-color: #070C16;;
+}
+.intro-title{
+    margin-top: 346px;
+    margin-left: 120px;
+    width: 547px;
+    height: 185px;
+    font-weight: bold;
+    font-size: 55px;
+    line-height: 66px;
+    text-align: center;
+    color: #DCEAEE;
+    mix-blend-mode: normal;
+}
+.intro-button {
+    width: 227px;
+    height: 52px;
+    border: 2px solid #00B2CA;
+    box-shadow: 0px 0px 6px rgba(131, 131, 131, 0.3);
+    border-radius: 5px;
 }
 
 
