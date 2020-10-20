@@ -84,48 +84,64 @@ body {
 .pick-line-menu{ 
     max-width: 122px;
     border: 2px solid #FFFFFF;
-    background-color: #FFFFFF;
 }
 /* Header Styles End */
 
-/* Intro-page Styles Start */
+/* Intro-page Styles Start*/
 .intro-block {
     float: left;
     height: 100vh;
 }
-.left-block{
-    width: 59%;
-    background-color: black;
-}
+/* Right Block Start*/
 .right-block {
     width: 41%;
-    background-color: #070C16;;
+    background-color: #070C16;
 }
 .intro-title{
-    margin-top: 346px;
-    margin-left: 120px;
-    width: 547px;
+    margin-top: 330px;
+    margin-left: 133px;
+    width: 515px;
     height: 185px;
     font-weight: bold;
     font-size: 55px;
     line-height: 66px;
     text-align: center;
-    color: #DCEAEE;
-    mix-blend-mode: normal;
+    color: #ffffff;
+    margin-bottom: 60px;
 }
 .intro-button {
-    width: 227px;
-    height: 52px;
+    margin-left: 277px;
+    padding: 11px 54px;
+    border-radius: 5px;
+    background: none;
     border: 2px solid #00B2CA;
     box-shadow: 0px 0px 6px rgba(131, 131, 131, 0.3);
-    border-radius: 5px;
+    font-family: Montserrat;
+    font-weight: 800;
+    font-size: 25px;
+    text-align: center;
+    color: #00B2CA;
 }
+.intro-button:hover, .intro-button:focus, .intro-button:active{
+    background: #00B2CA;
+    color: #070C16;
+}
+/* Right Block End*/
 
-
-
-
-
-
+/* Left Block Start*/
+.left-block{
+    width: 59%;
+    background: linear-gradient(360deg, #000000 0%, rgba(0, 0, 0, 0) 41.48%), url('../img/intro-pic.jpg') no-repeat;
+}
+.scroll-pic{
+    width: 70px;
+    margin-top: 900px;
+    margin-left: 535px;
+}
+.circle-sroll {
+    fill: #BBBBBB;
+    fill-opacity: 0.2;
+}
 
 
 
