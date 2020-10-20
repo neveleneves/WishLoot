@@ -15,6 +15,9 @@ body {
     background-color: #ffffff;
     height: 100vh;
 }
+a {
+    text-decoration: none;
+}
 /* Common Styles End */
 
 /* Header Styles Start */
@@ -68,7 +71,6 @@ body {
     font-size: 14px;
     line-height: 18px;
     color: #ffffff;
-    text-decoration: none;
 }
 .header-link:hover, .header-link:focus,.header-link:active, .header-logo-link:active {
     opacity: .9;
@@ -212,14 +214,18 @@ body {
 .wishlist-section{
     margin-top: 50px;
     max-width: 1020px;
-    height: 534px;
+    height: 531px;
 
 }
 .wrapper-content-nav{
-
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 35px;
 }
 .wishlist-title{
-    width: 134px;
+    max-width: 134px;
     height: 16px;
     font-family: Montserrat;
     font-style: normal;
@@ -231,7 +237,7 @@ body {
 }
 .see-more-link{
     width: 85px;
-    height: 18px;
+    height: 16px;
     font-family: Montserrat;
     font-style: normal;
     font-weight: bold;
@@ -239,6 +245,16 @@ body {
     line-height: 18px;
     letter-spacing: 0.03em;
     color: #000000;
+}
+.line-see-more{
+    width: 83px;
+    height: 0px;
+    border: 1px solid #000000;
+}
+.item-cards {
+    max-width: 1020px;
+    height: 480px;
+    background-color: #000000;
 }
 /* Wishlist Styles Start*/
 
