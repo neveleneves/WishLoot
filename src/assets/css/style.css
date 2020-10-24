@@ -76,7 +76,7 @@ img {
     line-height: 18px;
     color: #ffffff;
 }
-.header-link:hover, .header-link:focus,.header-link:active, .header-logo-link:active {
+.header-link:hover, .header-link:focus,.header-link:active {
     opacity: .9;
     color: #00B2CA;
 }
@@ -217,7 +217,8 @@ img {
 .wishlist-section{
     margin-top: 50px;
     max-width: 1020px;
-    height: 531px;
+    min-height: 150px;
+    margin-bottom: 50px;
 }
 .wrapper-content-nav{
     display: flex;
@@ -226,7 +227,7 @@ img {
     justify-content: space-between;
     margin-bottom: 45px;
 }
-.wishlist-title{
+.section-title{
     max-width: 134px;
     height: 21px;
     font-family: Montserrat;
@@ -261,6 +262,7 @@ img {
     display: grid;
     grid-template-columns: repeat(4,1fr);
     column-gap: 20px;
+    margin-bottom: 35px;
 }
 .example-product-card{
     margin-bottom: 20px;
@@ -279,17 +281,19 @@ img {
     font-family: Montserrat;
     font-style: normal;
     font-weight: 600;
-    font-size: 12px;
+    font-size: 13px;
     line-height: 18px;
     color: #303030;
     text-align: center;
 }
 .product-panel{
-    padding: 0 96px;
-    margin: 4px 3px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
     position: absolute;
     bottom: 0px;
-
+    padding: 0px 3px 5px 6px
 }
 .product-price {
     font-family: Montserrat;
@@ -299,7 +303,37 @@ img {
     font-size: 18px;
     color: #303030;
     text-align: center;
+    padding: 0px 70px;
+}
+.product-button{
+    max-width: 23px;
+    max-height: 23px;
+}
+.info-title{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 18px;
+    letter-spacing: 0.03em;
+    color: #9e9e9e;
+    text-align: center;
+    margin-bottom: 35px;
+}
+.end-section-line{
+    border: 1px solid #CECECE;
 }
 /* Wishlist Styles End*/
+
+/* Done Styles Start*/
+.done-section{
+    max-width: 1020px;
+    min-height: 150px;
+    margin-bottom: 50px;
+}
+/* Done Styles End*/
+
+/* Blog Styles End*/
+/* Blog Styles End*/
 
 /* Main-page Styles End*/
