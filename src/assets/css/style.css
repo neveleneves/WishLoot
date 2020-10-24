@@ -13,10 +13,14 @@ body {
     font-weight: normal;
     color: #303030;
     background-color: #ffffff;
-    height: 100vh;
+    min-height: 100vh;
 }
 a {
     text-decoration: none;
+}
+img {
+    max-width: 100%;
+    height: auto;
 }
 /* Common Styles End */
 
@@ -94,7 +98,7 @@ a {
 /* Right Block Start*/
 .right-block {
     float: left;
-    height: 100vh;
+    min-height: 100vh;
     width: 41%;
     background-color: #070C16;
 }
@@ -132,7 +136,7 @@ a {
 /* Left Block Start*/
 .left-block{
     float: left;
-    height: 100vh;
+    min-height: 100vh;
     width: 59%;
     background: linear-gradient(360deg, #000000 0%, rgba(0, 0, 0, 0) 41.48%), url('../img/intro-pic.jpg') no-repeat;
 }
@@ -161,7 +165,6 @@ a {
     background: url(../img/search-background.jpg) no-repeat;
 }
 .wrapper-content{
-    height: 100vh;
     max-width: 1020px;
     margin: 0 auto;
 }
@@ -221,11 +224,11 @@ a {
     flex-wrap: wrap;
     align-items: flex-end;
     justify-content: space-between;
-    margin-bottom: 35px;
+    margin-bottom: 45px;
 }
 .wishlist-title{
     max-width: 134px;
-    height: 16px;
+    height: 21px;
     font-family: Montserrat;
     font-style: normal;
     font-weight: bold;
@@ -254,30 +257,48 @@ a {
     max-width: 1020px;
     height: 480px;
 }
-.wrapper-products-cards{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-around;
+.wrapper-product-cards{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    column-gap: 20px;
 }
 .example-product-card{
-    width: 240px;
-    height: 230px;
+    margin-bottom: 20px;
+    grid-column: span 1;
+    height: 250px;
     background-color: #F5F5F5;
     border-radius: 3px;
-    filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.25));
+    filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.25));
+    position: relative;
 }
 .product-image{
-    padding: 7px 7px 2px 7px;
+    padding: 7px 7px 5px 7px;
 }
 .product-title{
-    padding: 0px 36px 0px 36px;
+    padding: 0px 15px;
     font-family: Montserrat;
     font-style: normal;
     font-weight: 600;
-    font-size: 11px;
+    font-size: 12px;
     line-height: 18px;
     color: #303030;
+    text-align: center;
+}
+.product-panel{
+    padding: 0 96px;
+    margin: 4px 3px;
+    position: absolute;
+    bottom: 0px;
+
+}
+.product-price {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px;
+    font-size: 18px;
+    color: #303030;
+    text-align: center;
 }
 /* Wishlist Styles End*/
 
