@@ -275,10 +275,10 @@ img {
     margin-bottom: 20px;
     grid-column: span 1;
     height: 250px;
-    background-color: #F5F5F5;
+    background-color: #f0f0f0;
     border-radius: 3px;
-    filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.25));
-    position: relative;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    /* position: relative; */
 }
 .product-image{
     padding: 7px 7px 5px 7px;
@@ -292,15 +292,15 @@ img {
     line-height: 18px;
     color: #303030;
     text-align: center;
+    margin-bottom: 10px;
 }
 .product-panel{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    position: absolute;
-    bottom: 0px;
-    padding: 0px 3px 5px 6px
+    /* position: absolute; */
+    padding: 0px 6px 5px 6px
 }
 .product-price {
     font-family: Montserrat;
@@ -310,7 +310,7 @@ img {
     font-size: 18px;
     color: #303030;
     text-align: center;
-    padding: 0px 70px;
+    padding: 0px 65px;
 }
 .product-button{
     max-width: 23px;
@@ -348,18 +348,67 @@ img {
 }
 .wrapper-blog-cards{
     display: grid;
-    grid-template-columns: repeat(4, 2fr);
+    grid-template-columns: repeat(4, 1fr);
     column-gap: 20px;
+    row-gap: 30px;
     margin-bottom: 35px;
 }
+/* If the count block is n%2=0*/
 .example-blog-card{
-    grid-column: span 1;
-    height: 200px;
-    background-color: #F5F5F5; 
+    grid-column: span 2;
+    height: 450px;
+    background-color: #ebebeb; 
 }
-.example-blog-card:nth-child(4n-1), .example-blog-card:nth-child(4n-2){
-    background-color: indianred;
+/* If the count block is n%2=1*/
+.example-blog-card:nth-child(3n+1), .example-blog-card:nth-child(1){
+    grid-column-start: 2;
+    grid-column-end: 4;
 }
+.blog-image{
+    margin-bottom: 5px;
+}
+.blog-post-title{
+    padding: 10px 15px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 18px;
+    color: #303030;
+    text-align: center;
+    margin-bottom: 5px;
+}
+.blog-article-short{
+    padding: 0px 20px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: justify;
+    color: #303030;
+    margin-bottom: 40px;
+}
+.blog-read-more-link{
+    margin-left: 380px;
+    padding: 10px 20px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 18px;
+    color: #303030;
+}
+
+/* .wrapper-blog-nav{
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+.post-button-body{
+    
+    background-color: black;
+} */
 /* Blog Styles End*/
 
 /* Main-page Styles End*/
