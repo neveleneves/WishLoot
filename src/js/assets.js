@@ -10,3 +10,11 @@
         menu.classList.remove('header-nav-active');
     });
 }());
+(function(){
+    const searchButton = document.querySelector('.search-button');
+    const searchBlock = document.querySelector('.search-form');
+    console.log(searchBlock);
+    searchButton.addEventListener('click', () => {
+        searchBlock.classList.add('search-form-active');
+    });
+}());
