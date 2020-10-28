@@ -131,10 +131,10 @@ img {
 .wrapper-scroll-nav{
     display: block;
     max-width: 80px;
-    margin: 930px auto 0;
+    margin: 0 auto;
 }
 .scroll-pic{
-    margin: 0 5px;
+    margin: 900px 5px 0;
 }
 .circle-sroll {
     margin: 0 1px;
@@ -463,15 +463,48 @@ img {
 /* Footer Styles End*/
 /* Main-page Styles End*/
 
+
 /* Media Styles Start*/
 
-/* @media screen and (max-width: 1696px){
+@media screen and (max-width: 1680px){
     .intro-wrapper{
         grid-template-columns: minmax(auto, auto) 588px;
     }
-} */
+    .scroll-pic{
+        display: none;
+    }
+    .intro-title{
+        font-size: 45px;
+        margin-left: 50px;
+        margin-right: 50px;
+        margin-bottom: 30px;
+    }
+    .intro-button{
+        margin: 0px 170px;
+        padding: 10px 40px;
+        font-size: 20px;
+    }
+    .circle-sroll{ 
+        width: 15px;
+        height: 15px;
+    }
+}
+@media screen and (max-width: 1400px){
+    .intro-title{
+        margin-top: 220px;
+        font-size: 40px;
+        margin-left: 60px;
+        margin-right: 60px;
+    }
+}
 
 @media screen and (max-width: 1024px){
+    .intro-wrapper{
+        grid-template-columns: minmax(auto, auto);
+    }
+    .intro-right-block{
+        display: none;
+    }
     .wrapper-content{
         max-width: 770px;
     }
