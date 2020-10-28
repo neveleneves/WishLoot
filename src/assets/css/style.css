@@ -124,40 +124,63 @@ img {
 .burger-line-third{
     bottom: 0;
 }
-
 /* Header Styles End */
 
 /* Intro-page Styles Start*/
+/* Left Block Start*/
+.wrapper-scroll-nav{
+    display: block;
+    max-width: 80px;
+    margin: 930px auto 0;
+}
+.scroll-pic{
+    margin: 0 5px;
+}
+.circle-sroll {
+    margin: 0 1px;
+    fill: #BBBBBB;
+    fill-opacity: 0.1;
+} 
+/* Left Block End*/
 /* Right Block Start*/
-.right-block {
-    float: left;
+.intro-wrapper{
+    display: grid;
+    grid-template-columns: minmax(1090px, auto) minmax(588px, 830px);
+    column-gap: 0px;
     min-height: 100vh;
-    width: 41%;
+}
+.intro-left-block{
+    background: url(../img/intro-pic.jpg) no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.intro-right-block{
     background-color: #070C16;
 }
+.wrapper-intro-content{
+    display: block;
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 0 20px; 
+}
 .intro-title{
-    margin-top: 330px;
-    margin-left: 133px;
-    width: 515px;
-    height: 185px;
+    margin: 280px 10px 50px;
     font-weight: bold;
-    font-size: 55px;
-    line-height: 66px;
+    font-size: 53px;
+    line-height: 70px;
     text-align: center;
     color: #ffffff;
-    margin-bottom: 60px;
 }
 .intro-button {
-    margin-left: 277px;
-    padding: 11px 54px;
+    margin: 0 145px;
+    padding: 12px 54px;
     border-radius: 5px;
     background: none;
     border: 2px solid #00B2CA;
-    box-shadow: 0px 0px 6px #00B2CA;
+    box-shadow: 0px 0px 6px #00b2ca56;
     font-family: Montserrat;
-    font-weight: 800;
+    font-weight: 700;
     font-size: 25px;
-    text-align: center;
     color: #00B2CA;
 }
 .intro-button:hover, .intro-button:focus, .intro-button:active{
@@ -165,24 +188,6 @@ img {
     color: #070C16;
 }
 /* Right Block End*/
-
-/* Left Block Start*/
-.left-block{
-    float: left;
-    min-height: 100vh;
-    width: 59%;
-    background: linear-gradient(360deg, #000000 0%, rgba(0, 0, 0, 0) 41.48%), url('../img/intro-pic.jpg') no-repeat;
-}
-.scroll-pic{
-    width: 70px;
-    margin-top: 900px;
-    margin-left: 535px;
-}
-.circle-sroll {
-    fill: #BBBBBB;
-    fill-opacity: 0.2;
-}
-/* Left Block End*/
 /* Intro-page Styles End*/
 
 /* Main-page Styles Start*/
@@ -459,6 +464,13 @@ img {
 /* Main-page Styles End*/
 
 /* Media Styles Start*/
+
+/* @media screen and (max-width: 1696px){
+    .intro-wrapper{
+        grid-template-columns: minmax(auto, auto) 588px;
+    }
+} */
+
 @media screen and (max-width: 1024px){
     .wrapper-content{
         max-width: 770px;
