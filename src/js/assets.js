@@ -23,7 +23,8 @@
 //Search-button control
 (function(){
     if(window.location.href == 'http://localhost:8082/content.html'){
-        const searchButton = document.querySelector('.search-button');
+        
+    const searchButton = document.querySelector('.search-button');
     const searchBlock = document.querySelector('.search-form-adaptive');
     const searchBlockState = document.getElementById('search-state');
 
