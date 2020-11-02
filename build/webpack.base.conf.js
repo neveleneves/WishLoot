@@ -16,7 +16,13 @@ const PAGES = fs.readdirSync(PAGES_DIR).filter(fileName => fileName.endsWith('.h
 
 module.exports = {
     externals: {
-        paths: PATHS
+        paths: PATHS,
+        // fs: '{}',
+        // tls: '{}',
+        // net: '{}',
+        // dns: '{}',
+        // readline: '{}',
+        // http2: '{}',
     },
     entry: {
         app: PATHS.src
@@ -92,4 +98,16 @@ module.exports = {
             ]
         })
     ],
+    // resolve:{
+    //     fallback: {
+    //         "crypto": require.resolve("crypto-browserify"),
+    //         "https": require.resolve("https-browserify"),
+    //         "assert": require.resolve("assert/"),
+    //         "http": require.resolve("stream-http"),
+    //         "buffer": require.resolve("buffer/"),
+    //         "stream": require.resolve("stream-browserify"),
+    //         "zlib": require.resolve("browserify-zlib"),
+    //         "os": require.resolve("os-browserify/browser"),
+    //     },
+    // },
 }
