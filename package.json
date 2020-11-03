@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack-dev-server --open --config ./build/webpack.dev.conf.js",
     "build": "webpack --config ./build/webpack.build.conf.js",
-    "server": "node ./src/js/controller.js"
+    "server": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,7 @@
     "file-loader": "^6.1.1",
     "html-webpack-plugin": "^4.5.0",
     "mini-css-extract-plugin": "^1.0.0",
+    "nodemon": "^2.0.6",
     "path": "^0.12.7",
     "postcss": "^8.1.1",
     "postcss-loader": "^4.0.4",
