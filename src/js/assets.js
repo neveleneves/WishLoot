@@ -1,7 +1,7 @@
 //Burger-menu control
 (function(){
 
-    if(window.location.href == 'http://localhost:8082/content.html'){
+    if(window.location.href == 'http://localhost:8083/content.html'){
         const burgerMenu = document.querySelector('.burger');
     const menu = document.querySelector('.header-nav');
     const burgerMenuClose = document.querySelector('.header-burger-close');
@@ -22,7 +22,7 @@
 
 //Search-button control
 (function(){
-    if(window.location.href == 'http://localhost:8082/content.html'){
+    if(window.location.href == 'http://localhost:8083/content.html'){
         
     const searchButton = document.querySelector('.search-button');
     const searchBlock = document.querySelector('.search-form-adaptive');
