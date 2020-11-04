@@ -4,7 +4,9 @@ const app = express();
 
 
 
-console.log("!");
+
+
+
 
 app.use(express.static(path.resolve(__dirname, 'dist')))
 

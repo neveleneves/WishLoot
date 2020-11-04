@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "webpack-dev-server --open --config ./build/webpack.dev.conf.js",
     "build": "webpack --config ./build/webpack.build.conf.js",
-    "server": "node server.js"
+    "server-build": "node server.js",
+    "server-dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",

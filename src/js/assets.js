@@ -1,29 +1,26 @@
 //Burger-menu control
 (function(){
-
-    if(window.location.href == 'http://localhost:3000/content.html'){
+    if (window.location.pathname == '/content.html') {
         const burgerMenu = document.querySelector('.burger');
-    const menu = document.querySelector('.header-nav');
-    const burgerMenuClose = document.querySelector('.header-burger-close');
+        const menu = document.querySelector('.header-nav');
+        const burgerMenuClose = document.querySelector('.header-burger-close');
 
-    const searchBlockState = document.getElementById('search-state');
-    const searchBlock = document.querySelector('.search-form-adaptive');
-    const searchButton = document.querySelector('.search-button');
+        const searchBlockState = document.getElementById('search-state');
+        const searchBlock = document.querySelector('.search-form-adaptive');
 
-    burgerMenu.addEventListener('click', () => {
-        if(window.getComputedStyle(searchBlockState, null).display != 'none') searchBlock.classList.remove('search-form-adaptive-active');
-        menu.classList.add('header-nav-active');
-    });
-    burgerMenuClose.addEventListener('click', () => {
-        menu.classList.remove('header-nav-active');
-    });
+        burgerMenu.addEventListener('click', () => {
+            if(window.getComputedStyle(searchBlockState, null).display != 'none') searchBlock.classList.remove('search-form-adaptive-active');
+            menu.classList.add('header-nav-active');
+        });
+        burgerMenuClose.addEventListener('click', () => {
+            menu.classList.remove('header-nav-active');
+        });
     }
 }());
 
 //Search-button control
 (function(){
-    if(window.location.href == 'http://localhost:3000/content.html'){
-        
+    if(window.location.pathname == '/content.html') {
     const searchButton = document.querySelector('.search-button');
     const searchBlock = document.querySelector('.search-form-adaptive');
     const searchBlockState = document.getElementById('search-state');
@@ -37,3 +34,95 @@
     });
     }
 }());
+
+//Typing-carousel control
+
+(function(){
+    if (window.location.pathname == '/') {
+        const TxtRotate = function(el, toRotate, period) {
+            this.toRotate = toRotate;
+            this.el = el;
+            this.loopNum = 0;
+            this.period = parseInt(period, 10) || 2000;
+            this.txt = '';
+            this.tick();
+            this.isDeleting = false;
+        };
+    
+        TxtRotate.prototype.tick = function() {
+            let i = this.loopNum % this.toRotate.length;
+            let fullTxt = this.toRotate[i];
+    
+            if (this.isDeleting) this.txt = fullTxt.substring(0, this.txt.length - 1);
+            else this.txt = fullTxt.substring(0, this.txt.length + 1);
+          
+            this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+            const that = this;
+            let delta = 220 - Math.random() * 100;
+          
+            if (this.isDeleting)delta /= 2; 
+          
+            if (!this.isDeleting && this.txt === fullTxt) {
+              delta = this.period;
+              this.isDeleting = true;
+            } else if (this.isDeleting && this.txt === '') {
+              this.isDeleting = false;
+              this.loopNum++;
+              delta = 300;
+            }
+          
+            setTimeout(function() {
+              that.tick();
+            }, delta);
+        };
+          
+        window.onload = function() {
+            const elements = document.getElementsByClassName('txt-rotate');
+            for (let i=0; i<elements.length; i++) {
+              const toRotate = elements[i].getAttribute('data-rotate');
+              const period = elements[i].getAttribute('data-period');
+              if (toRotate) 
+                new TxtRotate(elements[i], JSON.parse(toRotate), period);
+            }
+            const css = document.createElement("style");
+            // css.innerHTML = ".txt-rotate > .wrap { border-right: 3px solid #999 }";
+            document.body.appendChild(css);
+        };
+    }
+}());
+    
+(function(){
+    const linksArray = Array.from(document.querySelectorAll('.header-link'));
+    
+    const pickLine = document.getElementById('pick-line-move');
+
+    linksArray.forEach(el => {
+        let indexLink = (el.id).substring(el.id.length-1);
+        el.addEventListener('mouseover', () => {
+            movePickLine(Number(indexLink), pickLine);
+        })
+    });
+
+    const movePickLine = (id, elem) => {
+        switch (id) {
+            case 1:
+                
+                break;
+            case 2:
+                
+                break;
+            case 3:
+
+                break;
+            case 4:
+                
+                break;
+            default:
+                break;
+        }
+        console.log(id);
+        console.log(elem);
+    };
+
+}());
+
