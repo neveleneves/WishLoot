@@ -127,7 +127,6 @@
             if (timeElapsed < duration) requestAnimationFrame(animation);
         };
         requestAnimationFrame(animation);
-
     };
 
     const scrollTo = function () {
