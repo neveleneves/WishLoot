@@ -11,21 +11,21 @@
         <div class="header-wrapper-menu">
             <div class="header-wrapper">
                 <div class="header-logo">
-                    <a href="/" class="header-logo-link">wishloot</a>
+                    <a href="http://localhost:3000/" class="header-logo-link">wishloot</a>
                 </div>
                 <nav class="header-nav">
                     <ul class="header-list">
                         <li class="header-item">
-                            <a href="/" class="header-link">HOME</a>
+                            <a href="http://localhost:3000/" class="header-link js-scroll-to-title">HOME</a>
                         </li>
                         <li class="header-item">
-                            <a href="/content.html" class="header-link">WISHLIST</a>
+                            <a href="#wishlist" class="header-link js-scroll-to-title">WISHLIST</a>
                         </li>
                         <li class="header-item">
-                            <a href="!#" class="header-link">DONE</a>
+                            <a href="#donelist" class="header-link js-scroll-to-title">DONE</a>
                         </li>
                         <li class="header-item">
-                            <a href="!#" class="header-link">BLOG</a>
+                            <a href="#blog" class="header-link js-scroll-to-title">BLOG</a>
                         </li>
                     </ul>
                     <div class="header-burger-close">
@@ -69,7 +69,7 @@
         <section class="content">
             <div class="wrapper-content">
                 <!-- Wishlist section Start -->
-                <div class="wishlist-section">
+                <section class="wishlist-section" id="wishlist">
                     <div class="wrapper-content-nav">
                         <h2 class="section-title">Wishlist</h2>
                         <span class="see-more-span">
@@ -125,10 +125,10 @@
                     </div>
                     <!-- <h2 class="info-title">Wish-list is still empty</h2> -->
                     <div class="end-section-line"></div>
-                </div>
+                </section>
                 <!-- Wishlist section End -->
                 <!-- Done section Start -->
-                <div class="done-section">
+                <section class="done-section" id="donelist">
                     <div class="wrapper-content-nav">
                         <h2 class="section-title">Done</h2>
                         <span class="see-more-span">
@@ -205,10 +205,10 @@
                     </div>
                     <!-- <h2 class="info-title">Done-list is still empty</h2> -->
                     <div class="end-section-line"></div>
-                </div>
+                </section>
                 <!-- Done section End -->
                 <!-- Blog section Start -->
-                <div class="blog-section">
+                <section class="blog-section" id="blog">
                     <div class="wrapper-content-nav">
                         <h2 class="section-title">Blog</h2>
                         <span class="see-more-span">
@@ -257,7 +257,7 @@
                         </a>
                     </div>
                     <div class="end-section-line"></div>
-                </div>
+                </section>
                 <!-- Blog section End -->
             </div>
         </section>
