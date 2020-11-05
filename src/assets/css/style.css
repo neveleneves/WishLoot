@@ -89,8 +89,12 @@ img {
     border: 1px solid #a5a5a5d8;
 }
 .pick-line-menu{
-    animation: timing 1.5s infinite;
-    margin-left: -1px;
+    display: none;
+}
+.pick-line-menu-active{
+    display: block;
+    position: absolute;
+    margin-left: 1px;
     display: block;
     width: 122px;
     border: 2px solid #FFFFFF;
@@ -103,9 +107,6 @@ img {
         transform: translateX(119%);
     }
 } */
-.pick-line-menu::before{
-    animation-timing-function: ease;
-}
 .search-button{
     display: none;
     width: 20px;

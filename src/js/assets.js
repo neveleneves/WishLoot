@@ -92,37 +92,14 @@
 }());
     
 (function(){
-    const linksArray = Array.from(document.querySelectorAll('.header-link'));
-    
-    const pickLine = document.getElementById('pick-line-move');
+    $('nav ul li').hover(function(){
+        let navOffset = $(this).position().left;
 
-    linksArray.forEach(el => {
-        let indexLink = (el.id).substring(el.id.length-1);
-        el.addEventListener('mouseover', () => {
-            movePickLine(Number(indexLink), pickLine);
-        })
+        $('.pick-line-menu').toggleClass('pick-line-menu-active');
+        
+        $('.pick-line-menu-active').each(function () {
+            this.style.setProperty( 'left', `${navOffset}px`);
+        });
     });
-
-    const movePickLine = (id, elem) => {
-        switch (id) {
-            case 1:
-                
-                break;
-            case 2:
-                
-                break;
-            case 3:
-
-                break;
-            case 4:
-                
-                break;
-            default:
-                break;
-        }
-        console.log(id);
-        console.log(elem);
-    };
-
 }());
 

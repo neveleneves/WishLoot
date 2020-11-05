@@ -1,6 +1,7 @@
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const path = require('path')
 const fs = require('fs')
+const webpack = require('webpack')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
@@ -17,16 +18,9 @@ const PAGES = fs.readdirSync(PAGES_DIR).filter(fileName => fileName.endsWith('.h
 module.exports = {
     externals: {
         paths: PATHS,
-        // fs: '{}',
-        // tls: '{}',
-        // net: '{}',
-        // dns: '{}',
-        // readline: '{}',
-        // http2: '{}',
     },
     entry: {
         app: PATHS.src
-        //example_module: `${PATHS.src}/example.js`,
     },
     output: {
         filename: `${PATHS.assets}js/[name].[hash].js`,
@@ -96,18 +90,11 @@ module.exports = {
                 {from: `${PATHS.src}/${PATHS.assets}fonts`, to: `${PATHS.assets}fonts`},
                 {from: `${PATHS.src}/static`, to: ''}
             ]
+        }),
+        new webpack.ProvidePlugin({
+            $: "jquery/dist/jquery.min.js",
+            jQuery: "jquery/dist/jquery.min.js",
+            "window.jQuery": "jquery/dist/jquery.min.js"
         })
     ],
-    // resolve:{
-    //     fallback: {
-    //         "crypto": require.resolve("crypto-browserify"),
-    //         "https": require.resolve("https-browserify"),
-    //         "assert": require.resolve("assert/"),
-    //         "http": require.resolve("stream-http"),
-    //         "buffer": require.resolve("buffer/"),
-    //         "stream": require.resolve("stream-browserify"),
-    //         "zlib": require.resolve("browserify-zlib"),
-    //         "os": require.resolve("os-browserify/browser"),
-    //     },
-    // },
 }
