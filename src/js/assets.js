@@ -21,17 +21,17 @@
 //Search-button control
 (function(){
     if(window.location.pathname == '/content.html') {
-    const searchButton = document.querySelector('.search-button');
-    const searchBlock = document.querySelector('.search-form-adaptive');
-    const searchBlockState = document.getElementById('search-state');
+        const searchButton = document.querySelector('.search-button');
+        const searchBlock = document.querySelector('.search-form-adaptive');
+        const searchBlockState = document.getElementById('search-state');
 
-    searchButton.addEventListener('click', () => {
-        if(window.getComputedStyle(searchBlockState, null).display == 'none') {
-            searchBlock.classList.add('search-form-adaptive-active');
-        } else if (window.getComputedStyle(searchBlockState, null).display == 'block') {
-            searchBlock.classList.remove('search-form-adaptive-active');
-        }
-    });
+        searchButton.addEventListener('click', () => {
+            if(window.getComputedStyle(searchBlockState, null).display == 'none') {
+                searchBlock.classList.add('search-form-adaptive-active');
+            } else if (window.getComputedStyle(searchBlockState, null).display == 'block') {
+                searchBlock.classList.remove('search-form-adaptive-active');
+            }
+        });
     }
 }());
 
@@ -139,5 +139,28 @@
             });
     };
     if (window.location.pathname == '/content.html') scrollTo();
+}());
+
+//Controller for Search-nav
+(function () {
+    //Drop-down list with results
+    const searchFields = document.querySelectorAll('.js-search-field');
+    const searchFieldsResult = document.querySelectorAll('.search-results-filed');
+
+    searchFields.forEach(elem => {
+        elem.addEventListener('input', () => {
+            searchFieldsResult[0].classList.toggle('search-results-filed-active', elem.value);
+        });
+    });
+
+    //Close-button for results list
+    const closeSearchResult = document.querySelectorAll('.js-search-close-button');
+    
+    closeSearchResult.forEach(elem => {
+        elem.addEventListener('click', () => {
+            searchFieldsResult[0].classList.remove('search-results-filed-active');
+            if (searchFields[1].value) searchFields[1].value = '';
+        });
+    });
 }());
 

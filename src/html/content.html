@@ -56,12 +56,22 @@
             <div class="wrapper-content">
                 <div class="search-block-filed">
                     <form class="search-form-adaptive" id="search-state">
-                        <input class="search-filed-adaptive" name="search-item" placeholder="Search">
+                        <input autocomplete="off" class="search-filed-adaptive js-search-field" name="search-item" placeholder="Search">
                     </form>
                     <h2 class="search-title">Find a new dream thing</h2>
                     <form class="search-form">
-                        <input class="search-filed" name="search-item" placeholder="Search">
+                        <input autocomplete="off" class="search-filed js-search-field" name="search-item" placeholder="Search">    
                     </form>
+                    <div class="search-results-filed">
+                        <div class="wrapper-nav-search">
+                            <h3 class="search-result-title">RESULTS FOR YOU</h3>
+                            <div class="close-search-result js-search-close-button">
+                                <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 9L21 21M9 21L21 9" stroke="#9c9c9c" stroke-width="3"/>
+                                </svg> 
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
