@@ -275,18 +275,18 @@ img {
 .search-results-filed{
     display: none;
     border-top: 0.5px solid #d6d6d6;
-    box-shadow: 0 4px 4px rgba(0,0,0,.25);
-    border-radius: 3px;
+    box-shadow: 0 3px 5px rgba(0,0,0,.25);
+    /* border-radius: 3px; */
     position: absolute;
-    height: 50vh;
     width: 100%;
+    max-height: 541px;
     background-color: white;
 }
 .search-results-filed-active{
     display: block;
 }
 .wrapper-nav-search{
-    padding: 5px 5px 0px 15px; 
+    padding: 5px 0px 5px 15px; 
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -303,6 +303,63 @@ img {
 .close-search-result{
     max-width: 30px;
     max-height: 30px;
+}
+.wrapper-search-results{
+    max-height: 360px;
+    overflow-y: auto;
+}
+.search-list-item{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: 90px;
+    border-top: 0.5px solid #d6d6d6;
+}
+.example-search-card-result{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    max-width: 90%;
+    padding: 5px 0px 5px 15px;
+}
+.example-search-card-img{
+    margin-right: 15px;
+    max-width: auto;
+    height: 100%;
+}
+.example-search-card-title{
+    font-family: Montserrat;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 18px;
+    color: #303030;
+}
+.example-search-card-brand{
+    font-family: Montserrat;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 18px;
+    color: #727272;
+}
+.add-search-card{
+    max-width: 23px;
+    max-height: 23px;
+    margin-right: 25px;
+}
+.search-no-results{
+    height: 50px;
+    border-top: 0.5px solid #d6d6d6;
+    text-align: center;
+}
+.search-no-results-title {
+    margin: 15px 0px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    color:#5f5f5f;
 }
 /* Search Filed Styles End*/
 
