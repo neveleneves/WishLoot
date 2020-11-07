@@ -169,7 +169,6 @@
     itemNavButton.forEach(elem => {
         elem.addEventListener('click', () => {
             links = elem.querySelectorAll('a');
-            console.log(links);
 
             links[0].classList.toggle('add-search-visable-none');
             links[1].classList.toggle('add-done-visable');
