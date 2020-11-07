@@ -162,5 +162,26 @@
             if (searchFields[1].value) searchFields[1].value = '';
         });
     });
+
+    //Add/Remove a new item in wishlist
+    const itemNavButton = document.querySelectorAll('.wrapper-search-item-nav');
+
+    itemNavButton.forEach(elem => {
+        elem.addEventListener('click', () => {
+            links = elem.querySelectorAll('a');
+            console.log(links);
+
+            links[0].classList.toggle('add-search-visable-none');
+            links[1].classList.toggle('add-done-visable');
+        });
+    });
+
+    //Close Search-Field if click for not on it
+    document.addEventListener('click', (elem) => {
+        if(!searchFieldsResult[0].contains(elem.target)) {
+            searchFieldsResult[0].classList.remove('search-results-filed-active');
+            // if (searchFields[1].value) searchFields[1].value = '';
+        }
+    });
 }());
 

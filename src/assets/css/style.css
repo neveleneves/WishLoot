@@ -343,10 +343,24 @@ img {
     line-height: 18px;
     color: #727272;
 }
-.add-search-card{
+.wrapper-search-item-nav{
+    margin-right: 25px;
+}
+.add-search-card,.add-done-search-card{
     max-width: 23px;
     max-height: 23px;
-    margin-right: 25px;
+}
+.add-done-search-card{
+    display: none;
+}
+.add-search-visable-none{
+    display: none;
+}
+.add-done-visable{
+    display: block;
+}
+.add-search-card:hover, .add-done-search-card:hover{
+    opacity: 0.7;
 }
 .search-no-results{
     height: 50px;
