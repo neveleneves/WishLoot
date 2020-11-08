@@ -143,44 +143,52 @@
 
 //Controller for Search-nav
 (function () {
-    //Drop-down list with results
-    const searchFields = document.querySelectorAll('.js-search-field');
-    const searchFieldsResult = document.querySelectorAll('.search-results-filed');
 
-    searchFields.forEach(elem => {
-        elem.addEventListener('input', () => {
-            searchFieldsResult[0].classList.toggle('search-results-filed-active', elem.value);
+    const dropListResultsController = (searchFields, searchFieldsResult, closeSearchResult) => {
+        //Drop-down list with results
+        searchFields.forEach(elem => {
+            elem.addEventListener('input', () => {
+                searchFieldsResult.classList.toggle('search-results-filed-active', elem.value);
+            });
         });
-    });
 
-    //Close-button for results list
-    const closeSearchResult = document.querySelectorAll('.js-search-close-button');
-    
-    closeSearchResult.forEach(elem => {
-        elem.addEventListener('click', () => {
-            searchFieldsResult[0].classList.remove('search-results-filed-active');
-            if (searchFields[1].value) searchFields[1].value = '';
+        //Close-button for results list
+        closeSearchResult.addEventListener('click', () => {
+            searchFieldsResult.classList.remove('search-results-filed-active');
+            searchFields[1].value = '';
+            searchFields[0].value = '';
         });
-    });
 
-    //Add/Remove a new item in wishlist
-    const itemNavButton = document.querySelectorAll('.wrapper-search-item-nav');
-
-    itemNavButton.forEach(elem => {
-        elem.addEventListener('click', () => {
-            links = elem.querySelectorAll('a');
-
-            links[0].classList.toggle('add-search-visable-none');
-            links[1].classList.toggle('add-done-visable');
+        //Close Search-Field if click for not on it
+        document.addEventListener('click', (elem) => {
+            if (!searchFieldsResult.contains(elem.target)) {
+                searchFieldsResult.classList.remove('search-results-filed-active');
+                // if (searchFields[1].value) searchFields[1].value = '';
+            }
         });
-    });
+    };
 
-    //Close Search-Field if click for not on it
-    document.addEventListener('click', (elem) => {
-        if(!searchFieldsResult[0].contains(elem.target)) {
-            searchFieldsResult[0].classList.remove('search-results-filed-active');
-            // if (searchFields[1].value) searchFields[1].value = '';
-        }
-    });
+    const itemSearchNavController = (itemNavButton) => {
+        //Add/Remove a new search-item in wishlist
+        itemNavButton.forEach(elem => {
+            elem.addEventListener('click', () => {
+                links = elem.querySelectorAll('a');
+
+                links[0].classList.toggle('add-search-visable-none');
+                links[1].classList.toggle('add-done-visable');
+            });
+        });
+    };
+
+    if (window.location.pathname == '/content.html') {
+        const searchFields = document.querySelectorAll('.js-search-field');
+        const searchFieldsResult = document.querySelector('.search-results-filed');
+        const closeSearchResult = document.querySelector('.js-search-close-button');
+        dropListResultsController(searchFields, searchFieldsResult, closeSearchResult);
+
+        const itemNavButton = document.querySelectorAll('.wrapper-search-item-nav');
+        itemSearchNavController(itemNavButton);
+
+    }
 }());
 
