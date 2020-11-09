@@ -2,10 +2,15 @@ const express = require('express');
 const path = require('path')
 const app = express();
 
+const StockXController = require('./stockx-controller')
+
+
+
 const assetsItemsBase = [
     {id: 0, url:0, name: 0, model: 0, brand: 0, image_url: 0, release_date: 0,  product_category: 0,last_sale_price: 0,  lowest_ask_price: 0,  highest_bid_price: 0}
 ]
 
+let inputValue;
 // const StockXAPI = require('stockx-api');
 // const stockX = new StockXAPI();
 // let dataProduct;
@@ -24,12 +29,15 @@ app.use(express.json())
 
 // GET a database 
 app.get('/api/product_data', (req, res) => {
-    res.status(200).json(assetsItemsBase);
+    StockXController.catchStockXBase(`${inputValue}`).then((result) => {
+        res.status(200).json(result);
+    });
 })
 
 // POST a input-value
 app.post('/api/product_data', (req, res) => {
-    console.log(req.body)
+    //Server volition ?
+    inputValue = req.body.value;
     res.json({test:1})
 })
 
