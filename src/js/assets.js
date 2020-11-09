@@ -169,7 +169,7 @@
     };
 
     const itemSearchNavController = (itemNavButton) => {
-        //Add/Remove a new search-item in wishlist
+        //Add/Remove a new search-item in wishlistid="search-state"
         itemNavButton.forEach(elem => {
             elem.addEventListener('click', () => {
                 links = elem.querySelectorAll('a');
