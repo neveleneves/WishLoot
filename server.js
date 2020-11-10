@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path')
 const app = express();
 
-const StockXController = require('./stockx-controller')
+const StockXController = require('./server-assets')
 let inputValue;
 
 // const assetsItemsBase = [
