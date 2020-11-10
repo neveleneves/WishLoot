@@ -7,4 +7,4 @@ import './assets/css/style.css'
 import './js/assets'
 
 //Frontend module for client-server interaction (requesting data from server)
-import './js/searchController'
+import './js/controller'

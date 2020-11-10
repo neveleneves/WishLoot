@@ -4,7 +4,7 @@ const stockX = new StockXAPI();
 module.exports = { 
     catchStockXBase: async function(requestValue) {
         const data = stockX.newSearchProducts(`${requestValue}`, {
-            limit: 1
+            limit: 10
         })
         .then(products => {
             return products;

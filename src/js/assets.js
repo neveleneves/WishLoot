@@ -143,7 +143,6 @@
 
 //Controller for Search-nav
 (function () {
-
     const dropListResultsController = (searchFields, searchFieldsResult, closeSearchResult) => {
         //Drop-down list with results
         searchFields.forEach(elem => {
@@ -169,7 +168,7 @@
     };
 
     const itemSearchNavController = (itemNavButton) => {
-        //Add/Remove a new search-item in wishlistid="search-state"
+        //Add/Remove a new search-item in wishlist
         itemNavButton.forEach(elem => {
             elem.addEventListener('click', () => {
                 links = elem.querySelectorAll('a');
@@ -188,7 +187,6 @@
 
         const itemNavButton = document.querySelectorAll('.wrapper-search-item-nav');
         itemSearchNavController(itemNavButton);
-
     }
 }());
 
