@@ -1,13 +1,26 @@
-class SearchView {
-    #parentElem = document.querySelectorAll('.js-search-form');
+import View from './View'
 
-    getQuery() {
-        return this.#parentElem.querySelectorAll('.js-search-field').value;
+class SearchView {
+    #parentElem = document.querySelectorAll('.js-search-field');
+    #inputSearchObj;
+    #inputObjArray = {
+        value: ''
     }
 
-    addHandlerSearch(handler) {
-        this.#parentElem.addEventListener('input', ()=>{
+    //Catch a input-value from inputObjArray
+    getQuery() {
+        return this.#inputSearchObj;
+    }
 
+    //Hang up a handler for input-field & Execute Search-controller
+    addHandlerSearch(handler) {
+        this.#parentElem.forEach(elem => {
+            elem.addEventListener('input', () => {
+                this.#inputObjArray.value = elem.value;
+                const {...inputObj} = this.#inputObjArray;
+                this.#inputSearchObj = inputObj;
+                handler();
+            });
         });
     }
 }
