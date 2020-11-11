@@ -19,6 +19,7 @@ export const loadSearchResults = async function(query) {
         const searchResultsResponse = await ajaxRequest('/api/product_data');
         
         //Handling results from server and API StockX
+        console.log(searchResultsResponse);
         if (searchResultsResponse) {
             state.search.query = query;
             state.search.results = searchResultsResponse.map(res => {
@@ -36,12 +37,12 @@ export const loadSearchResults = async function(query) {
                     highest_bid_price: res.highest_bid 
                 }
             });
+            // console.log(state.search.results);
         } else {
-            //DOM "No results"
+            state.search.results = [];
         }
     } catch (error) {
-        console.error(`${error}`);
-        throw error;
+        console.warn(`Something is wrong with the model:`, error);
     }
 };
 

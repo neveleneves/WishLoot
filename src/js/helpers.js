@@ -17,6 +17,7 @@ export const ajaxRequest = async function (url, method = 'GET', data = null) {
         });
         return await response.json();
     } catch (err) {
-        console.warn('Somthing wrong:', err.massage);
+        // console.warn(err);
+        console.warn('Error searching: No products found');
     }
 };

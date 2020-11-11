@@ -6,11 +6,10 @@ class SearchResultsView{
     #data;
 
     renderSearchResultsView(data) {
-        console.log(data + " not found");
-        this.#parentElem.innerHTML = '';
         if(!data || (Array.isArray(data) && data.length === 0)) return this.itemsNotFoundMarkup();
 
         this.#data = data;
+        this.#parentElem.innerHTML = '';
         const markupSearchResults = this.createMarkup();
         this.#parentElem.insertAdjacentHTML('afterbegin', markupSearchResults);
     }
@@ -23,6 +22,7 @@ class SearchResultsView{
                 </div>
             </li>
         `;
+        this.#parentElem.innerHTML = '';
         this.#parentElem.insertAdjacentHTML('afterbegin', notFoundMarkup);
     }
 
@@ -31,10 +31,21 @@ class SearchResultsView{
     }
 
     createMarkupPreview(itemResult) {
+        // var img = new Image();
+        // img.onload = function() {
+        //     console.log('Success'); 
+        // };
+        // img.onerror = function(itemResult) {
+        //     itemResult.image_url = '/assets/img/item-unkown.jpg';
+        //     console.log(itemResult.image_url);
+        // };
+        // img.src = itemResult.image_url;
+        // console.log(itemResult.image_url + " Main img");
+
         return `
             <li class="search-list-item">
                 <div class="example-search-card-result">
-                    <img src="${itemResult.image_url}" alt="${itemResult.name}" class="example-search-card-img">
+                    <img onerror="this.onerror=null; this.src='/assets/img/item-unknow.jpg';" src="${itemResult.image_url}" alt="${itemResult.name}" class="example-search-card-img">
                     <div class="example-search-card-info">
                         <h2 class="example-search-card-title">${itemResult.name}</h2>
                         <h3 class="example-search-card-brand">${itemResult.brand}</h3>

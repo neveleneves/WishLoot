@@ -12,11 +12,11 @@ async function controlSearchResults() {
         //Load a search results from search-field
         await model.loadSearchResults(query);
 
-        //Rendering search-results   
+        //Rendering search-results
         searchResultsView.renderSearchResultsView(model.state.search.results);
         
     } catch (error) {
-        console.warn('Somthing wrong:', error.massage);
+        console.warn(`Something is wrong with the controller:`, error);
     }
 };
 
