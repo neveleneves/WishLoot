@@ -10,8 +10,18 @@ class SearchResultsView{
 
         this.#data = data;
         this.#parentElem.innerHTML = '';
+        // this.preloaderImages();
         const markupSearchResults = this.createMarkup();
         this.#parentElem.insertAdjacentHTML('afterbegin', markupSearchResults);
+    }
+
+    preloaderImages() {
+        this.#data.map(this.perloaderOneImage);
+    }
+
+    perloaderOneImage(item) {
+        const img = new Image();
+        img.src =  item.image_url;
     }
 
     itemsNotFoundMarkup() {
@@ -31,24 +41,12 @@ class SearchResultsView{
     }
 
     createMarkupPreview(itemResult) {
-        // var img = new Image();
-        // img.onload = function() {
-        //     console.log('Success'); 
-        // };
-        // img.onerror = function(itemResult) {
-        //     itemResult.image_url = '/assets/img/item-unkown.jpg';
-        //     console.log(itemResult.image_url);
-        // };
-        // img.src = itemResult.image_url;
-        // console.log(itemResult.image_url + " Main img");
-
         return `
             <li class="search-list-item">
                 <div class="example-search-card-result">
                     <img onerror="this.onerror=null; this.src='/assets/img/item-unknow.jpg';" src="${itemResult.image_url}" alt="${itemResult.name}" class="example-search-card-img">
                     <div class="example-search-card-info">
                         <h2 class="example-search-card-title">${itemResult.name}</h2>
-                        <h3 class="example-search-card-brand">${itemResult.brand}</h3>
                     </div>
                 </div>
                 <div class="wrapper-search-item-nav">
