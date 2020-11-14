@@ -3,8 +3,13 @@ import View from './View';
 
 class SearchResultsView{
     #parentElem = document.querySelector('.search-result-list');
+    #searchFieldsResult = document.querySelector('.search-results-filed');
+    #searchFields = document.querySelectorAll('.js-search-field');
+
+    #itemNavButton;
     #data;
 
+    //Main method for render Search Results Field
     renderSearchResultsView(data) {
         if(!data || (Array.isArray(data) && data.length === 0)) return this.itemsNotFoundMarkup();
 
@@ -13,17 +18,40 @@ class SearchResultsView{
         // this.preloaderImages();
         const markupSearchResults = this.createMarkup();
         this.#parentElem.insertAdjacentHTML('afterbegin', markupSearchResults);
+
+        this.itemSearchNavController();
+
+        this.#searchFields.forEach(elem => {
+            if(elem.value) 
+                this.#searchFieldsResult.classList.toggle('search-results-filed-active', elem.value);
+        });
     }
 
-    preloaderImages() {
-        this.#data.map(this.perloaderOneImage);
-    }
+    // preloaderImages() {
+    //     this.#data.map(this.perloaderOneImage);
+    // }
 
-    perloaderOneImage(item) {
-        const img = new Image();
-        img.src =  item.image_url;
-    }
+    // perloaderOneImage(item) {
+    //     const img = new Image();
+    //     img.src =  item.image_url;
+    // }
 
+    //Add/Remove a new search-item in wishlist
+    itemSearchNavController() {
+        this.#itemNavButton = document.querySelectorAll('.wrapper-search-item-nav');
+        console.log(this.#itemNavButton);
+
+        this.#itemNavButton.forEach(elem => {
+            elem.addEventListener('click', () => {
+                const links = elem.querySelectorAll('a');
+
+                links[0].classList.toggle('add-search-visable-none');
+                links[1].classList.toggle('add-done-visable');
+            });
+        });
+    };
+
+    //Search failed message
     itemsNotFoundMarkup() {
         const notFoundMarkup = `
             <li class="search-list-item-no-results">
@@ -36,10 +64,12 @@ class SearchResultsView{
         this.#parentElem.insertAdjacentHTML('afterbegin', notFoundMarkup);
     }
 
+    //Merging the markup of all cards
     createMarkup() {
         return this.#data.map(this.createMarkupPreview).join('');
     }
 
+    //Markup of the card for the item found in the search
     createMarkupPreview(itemResult) {
         return `
             <li class="search-list-item">
@@ -63,8 +93,6 @@ class SearchResultsView{
                 </div>
             </li>
         `;
-        // searchResults.innerHTML = '';
-        // searchList.insertAdjacentHTML('afterbegin', markup);
     }
 }
 export default new SearchResultsView();
