@@ -15,31 +15,20 @@ class SearchResultsView{
 
         this.#data = data;
         this.#parentElem.innerHTML = '';
-        // this.preloaderImages();
         const markupSearchResults = this.createMarkup();
         this.#parentElem.insertAdjacentHTML('afterbegin', markupSearchResults);
 
-        this.itemSearchNavController();
+        this.itemSearchNav();
 
         this.#searchFields.forEach(elem => {
             if(elem.value) 
                 this.#searchFieldsResult.classList.toggle('search-results-filed-active', elem.value);
         });
     }
-
-    // preloaderImages() {
-    //     this.#data.map(this.perloaderOneImage);
-    // }
-
-    // perloaderOneImage(item) {
-    //     const img = new Image();
-    //     img.src =  item.image_url;
-    // }
-
+    
     //Add/Remove a new search-item in wishlist
-    itemSearchNavController() {
+    itemSearchNav() {
         this.#itemNavButton = document.querySelectorAll('.wrapper-search-item-nav');
-        console.log(this.#itemNavButton);
 
         this.#itemNavButton.forEach(elem => {
             elem.addEventListener('click', () => {
@@ -72,9 +61,9 @@ class SearchResultsView{
     //Markup of the card for the item found in the search
     createMarkupPreview(itemResult) {
         return `
-            <li class="search-list-item">
+            <li class="search-list-item" id="${itemResult.id}">
                 <div class="example-search-card-result">
-                    <img onerror="this.onerror=null; this.src='/assets/img/item-unknow.jpg';" src="${itemResult.image_url}" alt="${itemResult.name}" class="example-search-card-img">
+                    <img onerror="this.onerror=null; this.src='/assets/img/item-unknow.jpg';" src="${itemResult.image_url_small}" alt="${itemResult.name}" class="example-search-card-img">
                     <div class="example-search-card-info">
                         <h2 class="example-search-card-title">${itemResult.name}</h2>
                     </div>

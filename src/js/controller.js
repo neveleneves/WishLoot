@@ -1,9 +1,10 @@
 import * as model from './model'
 import searchView from './views/searchView'
 import searchResultsView from './views/searchResultsView'
+import wishlistView from './views/wishlistView'
 
 //Controller for Search section
-async function controlSearchResults() {
+const controlSearchResults = async () => {
     try {
         //Get a value from input fields
         const query = searchView.getQuery();
@@ -13,21 +14,29 @@ async function controlSearchResults() {
         await model.loadSearchResults(query);
 
         //Rendering search-results
-        searchResultsView.renderSearchResultsView(model.state.search.results);
+        await searchResultsView.renderSearchResultsView(model.state.search.results);
+
+        //Catch a adding items to wishlist
+        wishlistView.itemHandler();
+    } catch (error) {
+        console.warn(`Something is wrong with the Search-controller:`, error);
+    }
+};
+
+//Controller for Search section
+const controlWishlist = () => {
+    try {
         
     } catch (error) {
-        console.warn(`Something is wrong with the controller:`, error);
+        console.warn(`Something is wrong with the Wishlist-controller:`, error);
     }
 };
 
 //Main function for executing project
-const init = function() {
+const init = () => {
     if (window.location.pathname == '/content.html') {
-    //for View a one product
-    //addHandlerRender method (load, hash)
-
-    //Views for Search section
     searchView.addHandlerSearch(controlSearchResults);
+    wishlistView.addHandlerWishlist(controlWishlist);
     } else if (window.location.pathname == '/index.html') {
 
     }
