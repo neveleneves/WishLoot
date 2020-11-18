@@ -25,7 +25,7 @@ export const loadSearchResults = async (query) => {
         const searchResultsResponse = await ajaxRequest('/api/product_data');
 
         //Handling results from server and API StockX
-        console.log(searchResultsResponse);
+        // console.log(searchResultsResponse);
         if (searchResultsResponse) {
             state.search.query = query;
             state.search.results = searchResultsResponse.map(res => {
@@ -44,7 +44,7 @@ export const loadSearchResults = async (query) => {
                     highest_bid_price: res.highest_bid 
                 }
             });
-            console.log(state.search.results);
+            // console.log(state.search.results);
         } else {
             state.search.results = [];
         }

@@ -5,8 +5,8 @@ class SearchResultsView{
     #parentElem = document.querySelector('.search-result-list');
     #searchFieldsResult = document.querySelector('.search-results-filed');
     #searchFields = document.querySelectorAll('.js-search-field');
-
-    #itemNavButton;
+    
+    #searchListItems;
     #data;
 
     //Main method for render Search Results Field
@@ -17,25 +17,35 @@ class SearchResultsView{
         this.#parentElem.innerHTML = '';
         const markupSearchResults = this.createMarkup();
         this.#parentElem.insertAdjacentHTML('afterbegin', markupSearchResults);
-
-        this.itemSearchNav();
-
+        
         this.#searchFields.forEach(elem => {
             if(elem.value) 
                 this.#searchFieldsResult.classList.toggle('search-results-filed-active', elem.value);
         });
+
+        this.itemSearchNav();
     }
     
     //Add/Remove a new search-item in wishlist
     itemSearchNav() {
-        this.#itemNavButton = document.querySelectorAll('.wrapper-search-item-nav');
+        this.#searchListItems = this.#parentElem.querySelectorAll('.search-list-item');
 
-        this.#itemNavButton.forEach(elem => {
-            elem.addEventListener('click', () => {
-                const links = elem.querySelectorAll('a');
+        this.#searchListItems.forEach(item => {
+            const itemButton = item.querySelector('.wrapper-search-item-nav');
+
+            itemButton.addEventListener('click', () => {
+
+                const links = itemButton.querySelectorAll('a');
 
                 links[0].classList.toggle('add-search-visable-none');
                 links[1].classList.toggle('add-done-visable');
+
+                if (itemButton.querySelector('.add-done-visable')) {
+                    item.classList.add('added');
+                }
+                else {
+                    item.classList.remove('added');
+                }
             });
         });
     };

@@ -14,10 +14,7 @@ const controlSearchResults = async () => {
         await model.loadSearchResults(query);
 
         //Rendering search-results
-        await searchResultsView.renderSearchResultsView(model.state.search.results);
-
-        //Catch a adding items to wishlist
-        wishlistView.itemHandler();
+        searchResultsView.renderSearchResultsView(model.state.search.results);
     } catch (error) {
         console.warn(`Something is wrong with the Search-controller:`, error);
     }

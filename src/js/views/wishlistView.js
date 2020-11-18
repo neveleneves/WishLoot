@@ -3,26 +3,37 @@ import View from './View'
 class WishlistView {
     #parentElem;
     #childsList;
+    #itemforHandling;
 
-    itemHandler() {
-        this.#parentElem = document.querySelector('.search-result-list');
-        this.#childsList = this.#parentElem.querySelectorAll('li');
+    observeSearchList(){
+        let target = document.querySelector('.search-result-list');
 
-        this.#childsList.forEach(elem => {
-            const addItemButton = elem.querySelector('.wrapper-search-item-nav');
+        const config = {
+            attributes: true,
+            attributeFilter: ['class'],
+            childList: true,
+            subtree: true
+        }; 
 
-            addItemButton.addEventListener('click', () => {
-                if (addItemButton.querySelector('.add-done-visable')) {
-                    console.log(elem.id);
-                }
-                else {
-                    
-                }
-            });
-        });
+        const observer = new MutationObserver(this.checkChanges);
+        observer.observe(target, config);
     };
-    
+
+    checkChanges(mutationList) {
+        mutationList.forEach(mutation => {
+            if(mutation.type === 'childList') {
+                //control for childlist
+            } else if(mutation.type === 'attributes') {
+                //control for child attribute
+                console.log(mutation);
+                
+
+            }
+        });
+    }
+
     addHandlerWishlist(handler) {
+        this.observeSearchList();
         handler();
     };
 }
