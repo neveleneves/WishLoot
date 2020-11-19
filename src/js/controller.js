@@ -23,7 +23,13 @@ const controlSearchResults = async () => {
 //Controller for Search section
 const controlWishlist = () => {
     try {
-        
+        //Catch a item ID and action for that item
+        const itemForWishlist = wishlistView.getHash();
+        if(!itemForWishlist) return;
+
+        //Action for selected item 
+        model.actionWishlist(itemForWishlist);
+
     } catch (error) {
         console.warn(`Something is wrong with the Wishlist-controller:`, error);
     }

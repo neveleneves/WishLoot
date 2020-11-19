@@ -33,7 +33,7 @@ class SearchResultsView{
         this.#searchListItems.forEach(item => {
             const itemButton = item.querySelector('.wrapper-search-item-nav');
 
-            itemButton.addEventListener('click', () => {
+            itemButton.addEventListener('click', (e) => {
 
                 const links = itemButton.querySelectorAll('a');
 
@@ -42,9 +42,11 @@ class SearchResultsView{
 
                 if (itemButton.querySelector('.add-done-visable')) {
                     item.classList.add('added');
+                    window.location.hash = 'item-add-'+item.id;
                 }
                 else {
                     item.classList.remove('added');
+                    window.location.hash = 'item-delete-'+item.id;
                 }
             });
         });

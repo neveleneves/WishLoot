@@ -1,4 +1,4 @@
-import {ajaxRequest} from './helpers.js'
+import {ajaxRequest, searchById} from './helpers.js'
 
 //Main state variable
 export const state = {
@@ -49,13 +49,22 @@ export const loadSearchResults = async (query) => {
             state.search.results = [];
         }
     } catch (error) {
-        console.warn(`Something is wrong with the model:`, error);
+        console.warn(`Something is wrong with the Search Result model:`, error);
     }
 };
 
 
 //Model for the functional of adding to the Wishlist
 export const addToWishlist = (item) => {
-    //Add item to the Wishlist
-    // state.wishlist.push(item);
+    try {
+        const itemForHandling = searchById(state.search.results, item);
+        //Send id item to server for add to this item by id
+        // const itemForAddResponse = await ajaxRequest();
+
+        //Catch a data from StockX 
+        // const searchResultsResponse = await ajaxRequest();
+
+    } catch (error) {
+        console.warn(`Something is wrong with the Wishlist model:`, error);
+    }
 };

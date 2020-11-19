@@ -27,6 +27,7 @@ class SearchView {
         document.addEventListener('click', (elem) => {
             if (!this.#searchFieldsResult.contains(elem.target)) {
                 this.#searchFieldsResult.classList.remove('search-results-filed-active');
+                window.location.hash = '';
                 // if (searchFields[1].value) searchFields[1].value = '';
             }
         });
