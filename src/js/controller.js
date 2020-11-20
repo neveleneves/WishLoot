@@ -1,9 +1,10 @@
 import * as model from './model'
 import searchView from './views/searchView'
 import searchResultsView from './views/searchResultsView'
+import wishlistActionView from './views/wishlistActionView'
 import wishlistView from './views/wishlistView'
 
-//Controller for Search section
+//Main Controller for Search section
 const controlSearchResults = async () => {
     try {
         //Get a value from input fields
@@ -20,16 +21,31 @@ const controlSearchResults = async () => {
     }
 };
 
-//Controller for Search section
-const controlWishlist = () => {
+//Controller for Wishlist Action
+const controlWishlistAction = () => {
     try {
         //Catch a item ID and action for that item
-        const itemForWishlist = wishlistView.getHash();
+        const itemForWishlist = wishlistActionView.getHash();
         if(!itemForWishlist) return;
 
         //Action for selected item 
         model.actionWishlist(itemForWishlist);
+    } catch (error) {
+        console.warn(`Something is wrong with the Wishlist-controller:`, error);
+    }
+};
 
+//Main Controller for Wishlist section
+const controlWishlist = async () => {
+    try {
+        //Catch Wishlist from database on server
+        await model.loadWishlist();
+
+        //Rendering Wishlist section
+        wishlistView.renderWishlistView(model.state.wishlist);
+
+
+        
     } catch (error) {
         console.warn(`Something is wrong with the Wishlist-controller:`, error);
     }
@@ -38,8 +54,10 @@ const controlWishlist = () => {
 //Main function for executing project
 const init = () => {
     if (window.location.pathname == '/content.html') {
-    searchView.addHandlerSearch(controlSearchResults);
-    wishlistView.addHandlerWishlist(controlWishlist);
+        wishlistView.addHandlerWishlist(controlWishlist);
+
+        searchView.addHandlerSearch(controlSearchResults);
+        wishlistActionView.addHandlerWishlistAction(controlWishlistAction);
     } else if (window.location.pathname == '/index.html') {
 
     }

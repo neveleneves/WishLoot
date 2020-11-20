@@ -7,12 +7,8 @@ export const state = {
         query: '',
         results: [],
     },
-    wishlist: [
-
-    ],
-    donelist :[
-
-    ]
+    wishlist: [],
+    donelist: []
 };
 
 //Model for Search section
@@ -54,17 +50,32 @@ export const loadSearchResults = async (query) => {
 };
 
 
-//Model for the functional of adding to the Wishlist
-export const addToWishlist = (item) => {
+//Model for the functional of adding/remove item to the Wishlist
+export const actionWishlist = async (item) => {
     try {
+        //Searching item in search results list by ID
         const itemForHandling = searchById(state.search.results, item);
-        //Send id item to server for add to this item by id
-        // const itemForAddResponse = await ajaxRequest();
 
-        //Catch a data from StockX 
-        // const searchResultsResponse = await ajaxRequest();
-
+        if(item.action) {
+            const addItemResponce = await ajaxRequest('/api/action_item', 'POST', itemForHandling);
+            state.wishlist.push(addItemResponce);
+        } else if (!item.action) {
+            // const removeItemResponce = await ajaxRequest('/api/product_data', 'POST', itemForHandling);
+        }
     } catch (error) {
-        console.warn(`Something is wrong with the Wishlist model:`, error);
+        console.warn(`Something is wrong with the Wishlist Action model:`, error);
+    }
+};
+
+//Model for the functional of adding to the Wishlist
+export const loadWishlist = async () => {
+    try {
+        const wishlistBase =  await ajaxRequest('/api/wishlist_data');
+        
+        if(wishlistBase) {
+            state.wishlist = wishlistBase;
+        } 
+    } catch (error) {
+        console.warn(`Something is wrong with the Main Wishlist model:`, error);
     }
 };

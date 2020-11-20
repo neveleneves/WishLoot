@@ -1,64 +1,27 @@
 import View from './View'
 
 class WishlistView {
+    #wishlistSection = document.querySelector('.wishlist-section');
 
-    #hashForHandling;
-    // observeSearchList(){
-    //     let target = document.querySelector('.search-result-list');
+    //Main method for render Wishlist section
+    renderWishlistView(wishlistData) {
+        if(!wishlistData || (Array.isArray(wishlistData) && wishlistData.length === 0)) return this.wishlistEmptyMarkup();
+    }
 
-    //     const config = {
-    //         attributes: true,
-    //         attributeFilter: ['class'],
-    //         childList: true,
-    //         subtree: true
-    //     }; 
+    //Wishlist Section failed message
+    wishlistEmptyMarkup() {
+        const wishlistProductsSection = this.#wishlistSection.querySelector('.wrapper-product-cards');
 
-    //     const observer = new MutationObserver(this.checkChanges);
-    //     observer.observe(target, config);
-
-    // };
-
-    // checkChanges(mutationList) {
-    //     const searchList = document.querySelector('.search-result-list');
-        
-    //     mutationList.forEach(mutation => {
-    //         if(mutation.type === 'childList') {
-    //             //control for childlist
-    //         } else if(mutation.type === 'attributes') {
-    //             //control for child attribute
-    //             if(mutation.target.classList.contains('added')) {
-    //                 let itemsForHandling = searchList.querySelectorAll('.added');
-    //             }
-    //             else {
-
-    //             }
-    //         }
-    //     });
-    // }
-    getHash() {
-        let item = {
-            hash: this.#hashForHandling,
-            action: ''
-        };
-
-        if (item.hash.includes('add')){
-            item.action = true;
-            item.hash = item.hash.replace('item-add-', '');
-        } else if (this.#hashForHandling.includes('delete')) {
-            item.action = false;
-            item.hash = item.hash.replace('item-delete-', '');
-        }
-        return item;
+        const emptyListMarkup = `
+            <h2 class="info-title">Wishlist is still empty</h2>
+        `;
+        wishlistProductsSection.innerHTML = '';
+        wishlistProductsSection.insertAdjacentHTML('afterend', emptyListMarkup);
     }
 
     addHandlerWishlist(handler) {
-        window.addEventListener('hashchange', ()=>{
-            const hash = window.location.hash;
-
-            if(hash.includes('item-')) {
-                this.#hashForHandling = window.location.hash;
-                handler();
-            } 
+        window.addEventListener("load", () => {
+            handler();
         });
     };
 }
