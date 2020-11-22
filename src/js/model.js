@@ -60,7 +60,8 @@ export const actionWishlist = async (item) => {
             const addItemResponce = await ajaxRequest('/api/action_item', 'POST', itemForHandling);
             state.wishlist.push(addItemResponce);
         } else if (!item.action) {
-            // const removeItemResponce = await ajaxRequest('/api/product_data', 'POST', itemForHandling);
+            const removeItemResponce = await ajaxRequest(`/api/action_item/${item.id}`, 'DELETE');
+            state.wishlist = state.wishlist.filter(productWishlist => productWishlist.id !== item.id)
         }
     } catch (error) {
         console.warn(`Something is wrong with the Wishlist Action model:`, error);

@@ -5,7 +5,7 @@ const StockXController = require('./server-assets')
 
 let inputValue;
 
-const BASE = {
+let BASE = {
     WISHLIST: [],
     DONELIST: []
 };
@@ -16,7 +16,7 @@ app.use(express.json())
 app.post('/api/product_data', (req, res) => {
     //Server volition ?
     inputValue = req.body.value;
-    res.json({test:1})
+    res.json({message: 'Value has been saved'})
 })
 
 // GET a database from StockX API
@@ -26,18 +26,27 @@ app.get('/api/product_data', (req, res) => {
     });
 })
 
-
-//POST a item from search-results section by click on it
+//POST a item from search-results section by click on it for add
 app.post('/api/action_item', (req, res) => {
     //Server volition ?
     
-    //if item created
     const item = req.body;
     BASE.WISHLIST.push(item);
     res.status(201).json(item)
 })
 
-//GET a Wishlist adata from database
+//DELETE a item from BASE
+app.delete('/api/action_item/:id', (req, res) => {
+    //Server volition ?
+
+    BASE.WISHLIST = BASE.WISHLIST.filter(item => item.id !== req.params.id)
+    res.status(200).json({
+        id: req.params.id,
+        message: 'Product has been delete'
+    })
+})
+
+//GET a Wishlist a data from database
 app.get('/api/wishlist_data', (req, res) => {
     //Server volition ?
     res.status(200).json(BASE.WISHLIST);

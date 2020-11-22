@@ -3,15 +3,21 @@ import View from './View'
 class WishlistView {
     #wishlistSection = document.querySelector('.wishlist-section');
     #wishlistCardsSection = this.#wishlistSection.querySelector('.wrapper-product-cards');
-    
+
+    #wishlistTitle;
     #wishlistDatabase;
 
     //Main method for render Wishlist section
     renderWishlistView(wishlistData) {
         if(!wishlistData || (Array.isArray(wishlistData) && wishlistData.length === 0)) return this.wishlistEmptyMarkup();
 
+        this.#wishlistTitle = this.#wishlistSection.querySelector('.info-title');
         this.#wishlistDatabase = wishlistData;
-        this.#wishlistCardsSection.innerHTML = '';
+
+        [this.#wishlistCardsSection, this.#wishlistTitle].forEach((elem) => {
+            if(elem) elem.innerHTML = '';
+        });
+
         const markupWishlistCards = this.createMarkupWishlist();
         this.#wishlistCardsSection.insertAdjacentHTML('afterbegin', markupWishlistCards);
     }
@@ -48,13 +54,11 @@ class WishlistView {
 
     //Wishlist Section failed message
     wishlistEmptyMarkup() {
-        const wishlistProductsSection = this.#wishlistSection.querySelector('.wrapper-product-cards');
-
         const emptyListMarkup = `
             <h2 class="info-title">Wishlist is still empty</h2>
         `;
-        wishlistProductsSection.innerHTML = '';
-        wishlistProductsSection.insertAdjacentHTML('afterend', emptyListMarkup);
+        this.#wishlistCardsSection.innerHTML = '';
+        this.#wishlistCardsSection.insertAdjacentHTML('afterend', emptyListMarkup);
     }
 
     addHandlerWishlist(handler) {

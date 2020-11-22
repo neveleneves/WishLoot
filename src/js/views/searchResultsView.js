@@ -8,9 +8,12 @@ class SearchResultsView{
     
     #searchListItems;
     #data;
+    #wishlistData;
 
     //Main method for render Search Results Field
-    renderSearchResultsView(data) {
+    renderSearchResultsView(data, wishlistData) {
+        if(wishlistData) this.#wishlistData = wishlistData;
+
         if(!data || (Array.isArray(data) && data.length === 0)) return this.itemsNotFoundMarkup();
 
         this.#data = data;
@@ -24,8 +27,31 @@ class SearchResultsView{
         });
 
         this.itemSearchNav();
+
+        if(this.#wishlistData) 
+            this.checkWishlistBase();
     }
     
+    //Check wishlist for added items
+    checkWishlistBase() {
+        console.log(this.#wishlistData);
+        console.log(this.#data);
+
+        this.#data.forEach(dataElem => {
+            this.#wishlistData.forEach(wishlistElem => {
+                if(dataElem.id === wishlistElem.id) {
+                    const listProduct = this.#parentElem.querySelector(`#${wishlistElem.id}`);
+                    const itemButton = listProduct.querySelector('.wrapper-search-item-nav');
+                    const links = itemButton.querySelectorAll('a');
+
+                    listProduct.classList.add("added");
+                    links[0].classList.add('add-search-visable-none');
+                    links[1].classList.add('add-done-visable');
+                }
+            });
+        });
+    };
+
     //Add/Remove a new search-item in wishlist
     itemSearchNav() {
         this.#searchListItems = this.#parentElem.querySelectorAll('.search-list-item');

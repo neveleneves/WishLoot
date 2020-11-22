@@ -15,21 +15,24 @@ const controlSearchResults = async () => {
         await model.loadSearchResults(query);
 
         //Rendering search-results
-        searchResultsView.renderSearchResultsView(model.state.search.results);
+        searchResultsView.renderSearchResultsView(model.state.search.results, model.state.wishlist);
     } catch (error) {
         console.warn(`Something is wrong with the Search-controller:`, error);
     }
 };
 
 //Controller for Wishlist Action
-const controlWishlistAction = () => {
+const controlWishlistAction = async () => {
     try {
         //Catch a item ID and action for that item
         const itemForWishlist = wishlistActionView.getHash();
         if(!itemForWishlist) return;
 
         //Action for selected item 
-        model.actionWishlist(itemForWishlist);
+        await model.actionWishlist(itemForWishlist);
+
+        //Rendering a item without reloading the page
+        wishlistView.renderWishlistView(model.state.wishlist);
     } catch (error) {
         console.warn(`Something is wrong with the Wishlist-controller:`, error);
     }
@@ -43,9 +46,6 @@ const controlWishlist = async () => {
 
         //Rendering Wishlist section
         wishlistView.renderWishlistView(model.state.wishlist);
-
-
-        
     } catch (error) {
         console.warn(`Something is wrong with the Wishlist-controller:`, error);
     }
