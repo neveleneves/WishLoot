@@ -33,7 +33,7 @@ class SearchView {
         });
     }
 
-    //Execute Search-controller & 
+    //Main handler for Search section
     addHandlerSearch(handler) {
         //Helper function for closing a field
         this.closeSearchField();

@@ -3,38 +3,8 @@ import View from './View'
 class WishlistActionView {
 
     #hashForHandling;
-    // observeSearchList(){
-    //     let target = document.querySelector('.search-result-list');
-
-    //     const config = {
-    //         attributes: true,
-    //         attributeFilter: ['class'],
-    //         childList: true,
-    //         subtree: true
-    //     }; 
-
-    //     const observer = new MutationObserver(this.checkChanges);
-    //     observer.observe(target, config);
-
-    // };
-
-    // checkChanges(mutationList) {
-    //     const searchList = document.querySelector('.search-result-list');
-        
-    //     mutationList.forEach(mutation => {
-    //         if(mutation.type === 'childList') {
-    //             //control for childlist
-    //         } else if(mutation.type === 'attributes') {
-    //             //control for child attribute
-    //             if(mutation.target.classList.contains('added')) {
-    //                 let itemsForHandling = searchList.querySelectorAll('.added');
-    //             }
-    //             else {
-
-    //             }
-    //         }
-    //     });
-    // }
+    
+    //Getting a item id and action
     getHash() {
         let item = {
             id: this.#hashForHandling,
@@ -51,6 +21,7 @@ class WishlistActionView {
         return item;
     }
 
+    //Main handler for Wishlist action
     addHandlerWishlistAction(handler) {
         window.addEventListener('hashchange', ()=>{
             const hash = window.location.hash;

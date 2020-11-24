@@ -26,6 +26,7 @@ class WishlistView {
         return this.#wishlistDatabase.map(this.createMarkupPreviewWishlist).join('');
     }
 
+    //Create markup for each card product
     createMarkupPreviewWishlist(wishlistDataCard) {
         return `
             <div class="example-product-card" id="#${wishlistDataCard.id}">
@@ -61,6 +62,7 @@ class WishlistView {
         this.#wishlistCardsSection.insertAdjacentHTML('afterend', emptyListMarkup);
     }
 
+    //Main handler for Wishlist section
     addHandlerWishlist(handler) {
         window.addEventListener("load", () => {
             handler();

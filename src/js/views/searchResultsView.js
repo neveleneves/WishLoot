@@ -1,4 +1,3 @@
-
 import View from './View';
 
 class SearchResultsView{
