@@ -46,10 +46,16 @@ app.delete('/api/action_item/:id', (req, res) => {
     })
 })
 
-//GET a Wishlist a data from database
+//GET a Wishlist data from database
 app.get('/api/wishlist_data', (req, res) => {
     //Server volition ?
     res.status(200).json(BASE.WISHLIST);
+})
+
+//GET a Donelist data from database
+app.get('/api/donelist_data', (req, res) => {
+    //Server volition ?
+    res.status(200).json(BASE.DONELIST);
 })
 
 app.use(express.static(path.resolve(__dirname, 'dist')))

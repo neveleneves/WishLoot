@@ -2,7 +2,9 @@ import * as model from './model'
 import searchView from './views/searchView'
 import searchResultsView from './views/searchResultsView'
 import wishlistActionView from './views/wishlistActionView'
+import View from './views/View'
 import wishlistView from './views/wishlistView'
+import donelistView from './views/donelistView'
 
 //Main Controller for Search section
 const controlSearchResults = async () => {
@@ -38,14 +40,18 @@ const controlWishlistAction = async () => {
     }
 };
 
-//Main Controller for Wishlist section
-const controlWishlist = async () => {
+//Main Controller for render Database
+const controlDatabase = async () => {
     try {
         //Catch Wishlist from database on server
         await model.loadWishlist();
+        //Catch Donelist from database on server
+        await model.loadDonelist();
 
         //Rendering Wishlist section
         wishlistView.renderWishlistView(model.state.wishlist);
+        //Rendering Donelist section
+        donelistView.renderDonelistView(model.state.donelist);
     } catch (error) {
         console.warn(`Something is wrong with the Wishlist-controller:`, error);
     }
@@ -54,7 +60,7 @@ const controlWishlist = async () => {
 //Main function for executing project
 const init = () => {
     if (window.location.pathname == '/content.html') {
-        wishlistView.addHandlerWishlist(controlWishlist);
+        View.addHandlerDatabase(controlDatabase);
 
         searchView.addHandlerSearch(controlSearchResults);
         wishlistActionView.addHandlerWishlistAction(controlWishlistAction);

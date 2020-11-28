@@ -33,9 +33,6 @@ class SearchResultsView{
     
     //Check wishlist for added items
     checkWishlistBase() {
-        console.log(this.#wishlistData);
-        console.log(this.#data);
-
         this.#data.forEach(dataElem => {
             this.#wishlistData.forEach(wishlistElem => {
                 if(dataElem.id === wishlistElem.id) {
