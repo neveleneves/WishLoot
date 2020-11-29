@@ -34,9 +34,9 @@ const controlWishlistAction = async () => {
         await model.actionWishlist(itemForWishlist);
 
         //Rendering a item without reloading the page
-        wishlistView.renderWishlistView(model.state.wishlist);
+        wishlistView.renderView(model.state.wishlist);
     } catch (error) {
-        console.warn(`Something is wrong with the Wishlist-controller:`, error);
+        console.warn(`Something is wrong with the Wishlist-Action-controller:`, error);
     }
 };
 
@@ -49,18 +49,18 @@ const controlDatabase = async () => {
         await model.loadDonelist();
 
         //Rendering Wishlist section
-        wishlistView.renderWishlistView(model.state.wishlist);
+        wishlistView.renderView(model.state.wishlist);
         //Rendering Donelist section
-        donelistView.renderDonelistView(model.state.donelist);
+        donelistView.renderView(model.state.donelist);
     } catch (error) {
-        console.warn(`Something is wrong with the Wishlist-controller:`, error);
+        console.warn(`Something is wrong with the Database-controller:`, error);
     }
 };
 
 //Main function for executing project
 const init = () => {
     if (window.location.pathname == '/content.html') {
-        View.addHandlerDatabase(controlDatabase);
+        wishlistView.addHandlerDatabase(controlDatabase);
 
         searchView.addHandlerSearch(controlSearchResults);
         wishlistActionView.addHandlerWishlistAction(controlWishlistAction);
