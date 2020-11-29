@@ -81,7 +81,7 @@ export const loadWishlist = async () => {
     }
 };
 
-//Model for the functional of adding to the Wishlist
+//Model for the functional of adding to the Donelist
 export const loadDonelist = async () => {
     try {
         const donelistBase =  await ajaxRequest('/api/donelist_data');
@@ -89,6 +89,6 @@ export const loadDonelist = async () => {
             state.donelist = donelistBase;
         } 
     } catch (error) {
-        console.warn(`Something is wrong with the Main Wishlist model:`, error);
+        console.warn(`Something is wrong with the Main Donelist model:`, error);
     }
 };
