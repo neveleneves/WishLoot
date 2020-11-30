@@ -55,7 +55,7 @@ class SearchResultsView{
         this.#searchListItems.forEach(item => {
             const itemButton = item.querySelector('.wrapper-search-item-nav');
 
-            itemButton.addEventListener('click', (e) => {
+            itemButton.addEventListener('click', () => {
 
                 const links = itemButton.querySelectorAll('a');
 
@@ -70,6 +70,7 @@ class SearchResultsView{
                     item.classList.remove('added');
                     window.location.hash = 'item-delete-'+item.id;
                 }
+                window.location.reload();
             });
         });
     };

@@ -6,6 +6,7 @@ class DonelistView extends View {
 
     _titleMain;
     _sectionDatabase;
+    _contentMask;
 
     //Donelist Section failed message
     _sectionEmptyMarkup() {
@@ -42,5 +43,12 @@ class DonelistView extends View {
             </div>
         `;
     }
+
+    //Main handler for Donelist View
+    addHandlerDonelist(handler) {
+        window.addEventListener('load', () => {
+            handler();
+        })
+    };
 }
 export default new DonelistView();

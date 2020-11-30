@@ -3,9 +3,10 @@ import View from './View'
 class WishlistView extends View {
     _sectionTarget = document.querySelector('.wishlist-section');
     _sectionCards = this._sectionTarget.querySelector('.wrapper-product-cards');
-
+    
     _titleMain;
     _sectionDatabase;
+    _contentMask;
 
     //Wishlist Section failed message
     _sectionEmptyMarkup() {
@@ -47,11 +48,11 @@ class WishlistView extends View {
         `;
     }
 
-    //Main handler for View database from server
-    addHandlerDatabase(handler) {
-        window.addEventListener("load", () => {
+    //Main handler for Wishlist View
+    addHandlerWishlist(handler) {
+        window.addEventListener('load', () => {
             handler();
-        });
+        })
     };
 }
 export default new WishlistView();

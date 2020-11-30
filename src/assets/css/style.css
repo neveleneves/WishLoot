@@ -211,12 +211,12 @@ img {
     position: relative;
 }
 .content-mask{
-    /* display: none; */
+    display: none;
     position: fixed;
     width: 100%;
     height: 100vh;
     z-index: 999;
-    background-color: rgba(0, 0, 0, 0.897);
+    background-color: rgba(0, 0, 0, 0.904);
 }
 .content-mask-visable {
     display: block;
@@ -226,13 +226,58 @@ img {
     max-width: 1020px;
     height: 100vh;
     margin: 0 auto;
+    padding: 0px 20px;
 }
 .remove-item-popup {
     margin: auto;
-    margin-top: 50vh;
-    width: 485px;
+    margin-top: calc(50vh - 150px);
+    max-width: 400px;
     height: 150px;
     background-color: #CECECE;
+    border-radius: 3px;
+}
+.wrapper-remove-item{
+    text-align: center;
+    padding: 0px 40px;
+}
+.remove-item-title{
+    padding: 15px 0px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 18px;
+    color:#303030;
+}
+.remove-item-text{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 21px;
+    margin-bottom: 30px;
+}
+.wrapper-remove-item-nav{
+    padding: 0px 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.success-remove, .cancel-remove {
+    padding: 3px;
+    width: 80px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    border: 0px;
+    border-radius: 2px;
+    color: #181818;
+}
+.success-remove:hover, .cancel-remove:hover {
+    color: white;
+    background-color: #070C16;
+}
+.success-remove:active, .cancel-remove:active {
+    color: #00e1ff;
 }
 /* Assets Styles End*/
 
@@ -936,6 +981,28 @@ img {
     }
     .wrapper-content{
         width: auto;
+    }
+    .remove-item-popup {
+        max-width: 300px;
+        max-height: 150px;
+    }
+    .remove-item-title, .remove-item-text, .success-remove, .cancel-remove {
+        font-size: 13px;
+    }
+    .success-remove, .cancel-remove {
+        padding: 5px 0px;
+    }
+    .remove-item-text {
+        margin-bottom: 15px;
+    }
+    .remove-item-title{
+        padding: 15px 0px;
+    }
+    .wrapper-remove-item-nav {
+        padding: 0 10px;
+    }
+    .wrapper-remove-item {
+        padding: 0px 35px;
     }
     .wrapper-product-cards{
         grid-template-columns: repeat(2, 1fr);

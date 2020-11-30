@@ -14,15 +14,40 @@ export default class View {
         this._sectionCards.insertAdjacentHTML('afterbegin', markupSectionCards);
 
         this.buttonCardRemove();
+
+        //Returning modified data
     }
 
     buttonCardRemove() {
-        const removeButtons = this._sectionCards.querySelectorAll('.wrapper-remove-button');
-        const contentMask = document.querySelector('.content-mask');
+        this._contentMask = document.querySelector('.content-mask');
+        const itemCards = this._sectionCards.querySelectorAll('.example-product-card');
 
-        removeButtons.forEach(button => {
+        itemCards.forEach(item => {
+            const removeButton = item.querySelector('.wrapper-remove-button');
+
+            removeButton.addEventListener('click', () => {
+                this._contentMask.classList.add('content-mask-visable');
+                this.removeItemPopupHandler(item);
+            });
+
+            //Search itemCard in section data + delete this item
+            //+ function for render call again
+        });
+    }
+
+    removeItemPopupHandler(itemForRemove) {
+        const popupRemoveItem = document.querySelector('.remove-item-popup');
+        const popupButtons = popupRemoveItem.querySelectorAll('button');
+
+        popupButtons.forEach(button => {
             button.addEventListener('click', () => {
-                contentMask.classList.add('content-mask-visable');
+                if(button.className === 'success-remove') {
+                    itemForRemove.remove();
+                    // + edit section data right now
+
+                    //
+                }
+                this._contentMask.classList.remove('content-mask-visable');
             });
         });
     }
