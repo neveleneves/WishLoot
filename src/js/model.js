@@ -61,14 +61,14 @@ export const actionWishlist = async (item) => {
             state.wishlist.push(addItemResponce);
         } else if (!item.action) {
             const removeItemResponce = await ajaxRequest(`/api/action_item/${item.id}`, 'DELETE');
-            state.wishlist = state.wishlist.filter(productWishlist => productWishlist.id !== item.id)
+            state.wishlist = state.wishlist.filter(productWishlist => productWishlist.id !== item.id);
         }
     } catch (error) {
         console.warn(`Something is wrong with the Wishlist Action model:`, error);
     }
 };
 
-//Model for the functional of adding to the Wishlist
+//Model for the load Wishlist
 export const loadWishlist = async () => {
     try {
         const wishlistBase =  await ajaxRequest('/api/wishlist_data');
@@ -81,7 +81,7 @@ export const loadWishlist = async () => {
     }
 };
 
-//Model for the functional of adding to the Donelist
+//Model for the load Donelist
 export const loadDonelist = async () => {
     try {
         const donelistBase =  await ajaxRequest('/api/donelist_data');
@@ -89,6 +89,27 @@ export const loadDonelist = async () => {
             state.donelist = donelistBase;
         } 
     } catch (error) {
-        console.warn(`Something is wrong with the Main Donelist model:`, error);
+        console.warn(`Something is wrong with the Load Donelist model:`, error);
     }
 };
+
+//Model for the functional of Sections
+export const actionSections = async(changedSection) => {
+    try {
+        console.log(state.wishlist);
+        if(changedSection.action === 'delete') {
+            const removeSectionItem = await ajaxRequest(`/api/action_${changedSection.sectionName}/${changedSection.itemID}`, `DELETE`);
+
+            if(changedSection.sectionName === 'wishlist')
+            state.wishlist = state.wishlist.filter(productWishlist => productWishlist.id !== changedSection.itemID);
+            else if(changedSection.sectionName === 'donelist')
+            state.donelist = state.donelist.filter(productDonelist => productDonelist.id !== changedSection.itemID);
+        }
+        else if(changedSection.action === 'add') {
+            // const addSectionItem = await ajaxRequest('/api/action_item', 'POST', itemForHandling);
+        }
+    }
+    catch (error) {
+        console.warn(`Something is wrong with the Action Sections model:`, error);
+    }
+}

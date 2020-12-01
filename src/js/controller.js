@@ -40,16 +40,52 @@ const controlWishlistAction = async () => {
     }
 };
 
+//Controller for Action in Section Wishlist
+const controlActionSectionWishlist= async () => {
+    try {
+        //Catch a changes from Wishlist
+        const sectionChanged = wishlistView.checkSectionChanges();
+
+        //Changing the database on the server
+        await model.actionSections(sectionChanged);
+
+        //Rendering Wishlist section if wishlist is empty
+        if(model.state.wishlist.length === 0)
+        wishlistView.renderView(model.state.wishlist);
+    } catch (error) {
+        console.warn(`Something is wrong with the Action-Section-controller:`, error);
+    }
+}
+
 //Controller for Wishlist Section
-const controlWishlist= async () => {
+const controlWishlist = async () => {
     try {
         //Catch Wishlist from database on server
         await model.loadWishlist();
 
         //Rendering Wishlist section
-        wishlistView.renderView(model.state.wishlist);
+        await wishlistView.renderView(model.state.wishlist);
+
+        wishlistView.addHandlerActionSection(controlActionSectionWishlist);
     } catch (error) {
         console.warn(`Something is wrong with the Wishlist-controller:`, error);
+    }
+}
+
+//Controller for Action in Section Wishlist/Donelist 
+const controlActionSectionDonelist= async () => {
+    try {
+        //Catch a changes from Donelist
+        const sectionChanged = donelistView.checkSectionChanges();
+
+        //Changing the database on the server
+        await model.actionSections(sectionChanged);
+
+        //Rendering Donelist section if donelist is empty
+        if(model.state.donelist.length === 0)
+        donelistView.renderView(model.state.donelist);
+    } catch (error) {
+        console.warn(`Something is wrong with the Action-Section-controller:`, error);
     }
 }
 
@@ -60,7 +96,9 @@ const controlDonelist = async () => {
         await model.loadDonelist();
 
         //Rendering Donelist section
-        donelistView.renderView(model.state.donelist);
+        await donelistView.renderView(model.state.donelist);
+
+        donelistView.addHandlerActionSection(controlActionSectionDonelist);
     } catch (error) {
         console.warn(`Something is wrong with the Donelist-controller:`, error);
     }

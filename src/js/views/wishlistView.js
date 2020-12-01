@@ -4,6 +4,8 @@ class WishlistView extends View {
     _sectionTarget = document.querySelector('.wishlist-section');
     _sectionCards = this._sectionTarget.querySelector('.wrapper-product-cards');
     
+    _itemForAction;
+    _itemCards;
     _titleMain;
     _sectionDatabase;
     _contentMask;

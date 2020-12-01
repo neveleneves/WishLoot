@@ -11,7 +11,7 @@ class WishlistActionView {
             action: ''
         };
 
-        if (item.id.includes('add')){
+        if (item.id.includes('add')) {
             item.action = true;
             item.id = item.id.replace('#item-add-', '');
         } else if (this.#hashForHandling.includes('delete')) {
