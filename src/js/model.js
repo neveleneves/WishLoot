@@ -51,15 +51,15 @@ export const loadSearchResults = async (query) => {
 
 
 //Model for the functional of adding/remove item to the Wishlist
-export const actionWishlist = async (item) => {
+export const actionSearchResults = async (item) => {
     try {
         //Searching item in search results list by ID
         const itemForHandling = searchById(state.search.results, item);
-
-        if(item.action) {
+        
+        if(item.action === 'add') {
             const addItemResponce = await ajaxRequest('/api/action_item', 'POST', itemForHandling);
             state.wishlist.push(addItemResponce);
-        } else if (!item.action) {
+        } else if (item.action === 'delete') {
             const removeItemResponce = await ajaxRequest(`/api/action_item/${item.id}`, 'DELETE');
             state.wishlist = state.wishlist.filter(productWishlist => productWishlist.id !== item.id);
         }
@@ -96,7 +96,6 @@ export const loadDonelist = async () => {
 //Model for the functional of Sections
 export const actionSections = async(changedSection) => {
     try {
-        console.log(state.wishlist);
         if(changedSection.action === 'delete') {
             const removeSectionItem = await ajaxRequest(`/api/action_${changedSection.sectionName}/${changedSection.itemID}`, `DELETE`);
 
@@ -106,7 +105,7 @@ export const actionSections = async(changedSection) => {
             state.donelist = state.donelist.filter(productDonelist => productDonelist.id !== changedSection.itemID);
         }
         else if(changedSection.action === 'add') {
-            // const addSectionItem = await ajaxRequest('/api/action_item', 'POST', itemForHandling);
+            const addSectionItem = await ajaxRequest('/api/action_item', 'POST', itemForHandling);
         }
     }
     catch (error) {

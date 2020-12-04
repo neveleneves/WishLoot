@@ -25,8 +25,9 @@ export const ajaxRequest = async function (url, method = 'GET', data = null) {
 export const searchById = (parentList, item) => {
     try {
         for (const elem of parentList) {
-            if(elem.id === item.id)
-            return elem;
+            if(elem.id === item.id) {
+                return elem;
+            }
         }
     } catch (err) {
         console.warn('No such ID in the list');

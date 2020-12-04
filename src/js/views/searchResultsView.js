@@ -10,7 +10,7 @@ class SearchResultsView{
     #wishlistData;
 
     //Main method for render Search Results Field
-    renderSearchResultsView(data, wishlistData) {
+    renderSearchResultsView(data, wishlistData, actionHandler) {
         if(wishlistData) this.#wishlistData = wishlistData;
 
         if(!data || (Array.isArray(data) && data.length === 0)) return this.itemsNotFoundMarkup();
@@ -25,7 +25,7 @@ class SearchResultsView{
                 this.#searchFieldsResult.classList.toggle('search-results-filed-active', elem.value);
         });
 
-        this.itemSearchNav();
+        this.itemSearchNav(actionHandler);
 
         if(this.#wishlistData) 
             this.checkWishlistBase();
@@ -49,7 +49,7 @@ class SearchResultsView{
     };
 
     //Add/Remove a new search-item in wishlist
-    itemSearchNav() {
+    itemSearchNav(actionHandler) {
         this.#searchListItems = this.#parentElem.querySelectorAll('.search-list-item');
 
         this.#searchListItems.forEach(item => {
@@ -62,15 +62,23 @@ class SearchResultsView{
                 links[0].classList.toggle('add-search-visable-none');
                 links[1].classList.toggle('add-done-visable');
 
+                let itemFromSearch = {
+                    sectionName: 'wishlist',
+                    id: item.id,
+                    action: ''
+                };
+
                 if (itemButton.querySelector('.add-done-visable')) {
                     item.classList.add('added');
-                    window.location.hash = 'item-add-'+item.id;
+                    itemFromSearch.action = 'add';
+                    // window.location.hash = 'item-add-'+item.id;
                 }
                 else {
                     item.classList.remove('added');
-                    window.location.hash = 'item-delete-'+item.id;
+                    itemFromSearch.action = 'delete';
+                    // window.location.hash = 'item-delete-'+item.id;
                 }
-                window.location.reload();
+                actionHandler(itemFromSearch);
             });
         });
     };

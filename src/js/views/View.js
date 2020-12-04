@@ -3,7 +3,6 @@ import { data } from "jquery";
 export default class View {
     //Main method for render Wishlist section
     renderView(data) {
-        console.log(data);
         if(!data || (Array.isArray(data) && data.length === 0)) return this._sectionEmptyMarkup();
 
         this._titleMain = this._sectionTarget.querySelector('.info-title');

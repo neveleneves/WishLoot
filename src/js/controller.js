@@ -16,32 +16,33 @@ const controlSearchResults = async () => {
         await model.loadSearchResults(query);
 
         //Rendering search-results
-        searchResultsView.renderSearchResultsView(model.state.search.results, model.state.wishlist);
+        searchResultsView.renderSearchResultsView(model.state.search.results, model.state.wishlist, controlSearchResultsAction);
     } catch (error) {
         console.warn(`Something is wrong with the Search-controller:`, error);
     }
 };
 
 //Controller for Wishlist Action
-const controlWishlistAction = async () => {
+const controlSearchResultsAction = async (itemForWishlist) => {
     try {
-        //Catch a item ID and action for that item
-        const itemForWishlist = wishlistActionView.getHash();
-        if(!itemForWishlist) return;
+        if(!itemForWishlist) 
+        return;
 
-        //Action for selected item 
-        await model.actionWishlist(itemForWishlist);
+        //Changing the database on the server
+        await model.actionSearchResults(itemForWishlist);
 
         //Rendering a item without reloading the page
-        // wishlistView.renderView(model.state.wishlist);
+        await wishlistView.renderView(model.state.wishlist);
 
+        //Handling navigation for an added item from Search Results 
+        wishlistView.addHandlerActionSection(controlActionSectionWishlist);
     } catch (error) {
         console.warn(`Something is wrong with the Wishlist-Action-controller:`, error);
     }
 };
 
 //Controller for Action in Section Wishlist
-const controlActionSectionWishlist= async () => {
+const controlActionSectionWishlist = async () => {
     try {
         //Catch a changes from Wishlist
         const sectionChanged = wishlistView.checkSectionChanges();
@@ -49,6 +50,7 @@ const controlActionSectionWishlist= async () => {
         //Changing the database on the server
         await model.actionSections(sectionChanged);
 
+        console.log(model.state.wishlist);
         //Rendering Wishlist section if wishlist is empty
         if(model.state.wishlist.length === 0)
         wishlistView.renderView(model.state.wishlist);
@@ -66,6 +68,7 @@ const controlWishlist = async () => {
         //Rendering Wishlist section
         await wishlistView.renderView(model.state.wishlist);
 
+        //Handler for wishlist Section action
         wishlistView.addHandlerActionSection(controlActionSectionWishlist);
     } catch (error) {
         console.warn(`Something is wrong with the Wishlist-controller:`, error);
@@ -98,6 +101,7 @@ const controlDonelist = async () => {
         //Rendering Donelist section
         await donelistView.renderView(model.state.donelist);
 
+        //Handler for donelist Section action
         donelistView.addHandlerActionSection(controlActionSectionDonelist);
     } catch (error) {
         console.warn(`Something is wrong with the Donelist-controller:`, error);
@@ -109,7 +113,7 @@ const init = () => {
     if (window.location.pathname == '/content.html') {
         //Contollers for all sections on the website
         searchView.addHandlerSearch(controlSearchResults);
-        wishlistActionView.addHandlerWishlistAction(controlWishlistAction);
+        // wishlistActionView.addHandlerWishlistAction(controlWishlistAction);
         wishlistView.addHandlerWishlist(controlWishlist);
         donelistView.addHandlerDonelist(controlDonelist);
 
