@@ -1,5 +1,3 @@
-import { data } from "jquery";
-
 export default class View {
     //Main method for render Wishlist section
     renderView(data) {
@@ -16,22 +14,44 @@ export default class View {
         this._sectionCards.insertAdjacentHTML('afterbegin', markupSectionCards);
     }
 
-    buttonCardRemove(handler) {
+    //Handler for buttons on cards
+    buttonCardHandler(handler) {
         this._contentMask = document.querySelector('.content-mask');
         this._itemCards = this._sectionCards.querySelectorAll('.example-product-card');
 
         this._itemCards.forEach(item => {
-            console.log(item);
             const removeButton = item.querySelector('.wrapper-remove-button');
+            const addButton = item.querySelector('.wrapper-done-button');
+
+            let sectionAction = {
+                sectionName: this._sectionTarget.id,
+                id: item.id.replace('#', ''),
+                action: ''
+            };
 
             removeButton.addEventListener('click', () => {
                 this._contentMask.classList.add('content-mask-visable');
-                this.removeItemPopupHandler(item, handler);
+                sectionAction.action = 'delete';
+                this.removeItemPopupHandler(item, handler, sectionAction);
+            });
+
+            addButton.addEventListener('click', () => {
+                sectionAction.action = 'add';
+                this.addButtonHandler(item, handler, sectionAction);
             });
         });
     }
 
-    removeItemPopupHandler(itemForRemove, handler) {
+    //Functional for click add-button
+    addButtonHandler(itemForAdd, handler, sectionAction) {
+        itemForAdd.remove();
+
+        this._itemForAction = itemForAdd;
+        handler(sectionAction);
+    }
+
+    //Popup functional for click remove-button
+    removeItemPopupHandler(itemForRemove, handler, sectionAction) {
         const popupRemoveItem = document.querySelector('.remove-item-popup');
         const popupButtons = popupRemoveItem.querySelectorAll('button');
 
@@ -40,7 +60,7 @@ export default class View {
                 if(button.className === 'success-remove') {
                     itemForRemove.remove();
                     this._itemForAction = itemForRemove;
-                    handler();
+                    handler(sectionAction);
                 }
                 this._contentMask.classList.remove('content-mask-visable');
             });
@@ -69,9 +89,8 @@ export default class View {
     addHandlerActionSection(handler) {
         this._itemCards = this._sectionCards.querySelectorAll('.example-product-card');
 
-        if (this._itemCards.length) {
-            this.buttonCardRemove(handler);
-        }
+        if (this._itemCards.length) 
+            this.buttonCardHandler(handler);
     };
 
     //Creating a complete list of markup cards for a section

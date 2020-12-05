@@ -33,3 +33,22 @@ export const searchById = (parentList, item) => {
         console.warn('No such ID in the list');
     }
 };
+
+//Action "add" by clicking on the button from the card
+export const addActionSection = async function (stateFromSection, stateToSection, item) {
+    let itemForHandling = searchById(stateFromSection, item);
+
+    console.log('action_' + item.sectionName);
+    const addSectionItem = await ajaxRequest(`/api/action_${item.sectionName}/${item.id}`, `POST`, itemForHandling);
+
+    stateToSection.push(addSectionItem);
+    return stateToSection;
+}
+
+//Action "remove" by clicking on the button from the card
+export const removeActionSection = async function (stateFromSection, item) {
+    const removeSectionItem = await ajaxRequest(`/api/action_${item.sectionName}/${item.id}`, `DELETE`);
+
+    stateFromSection = stateFromSection.filter(productWishlist => productWishlist.id !== item.id);
+    return stateFromSection;
+}

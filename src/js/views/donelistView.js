@@ -4,6 +4,8 @@ class DonelistView extends View {
     _sectionTarget = document.querySelector('.done-section');
     _sectionCards = this._sectionTarget.querySelector('.wrapper-product-cards');
 
+    _itemForAction;
+    _itemCards;
     _titleMain;
     _sectionDatabase;
     _contentMask;
@@ -14,6 +16,10 @@ class DonelistView extends View {
             <h2 class="info-title">Done-list is still empty</h2>
         `;
         this._sectionCards.innerHTML = '';
+
+        const sectionEmpty = this._sectionTarget.querySelector('.info-title');
+        if(sectionEmpty) sectionEmpty.remove();
+
         this._sectionCards.insertAdjacentHTML('afterend', emptyListMarkup);
     }
 

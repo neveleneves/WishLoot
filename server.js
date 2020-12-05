@@ -8,20 +8,20 @@ let inputValue;
 let BASE = {
     WISHLIST: [],
     DONELIST: [
-        {
-            brand: "Jordan",
-            highest_bid_price: 396,
-            id: "air-jordan-1-retro-high-dark-mocha",
-            image_url: "https://stockx.imgix.net/images/Air-Jordan-1-Retro-High-Dark-Mocha-2-Product.jpg?fit=fill&bg=FFFFFF&w=700&h=500&auto=format,compress&trim=color&q=90&dpr=2&updated_at=1606160687",
-            image_url_small: "https://stockx.imgix.net/images/Air-Jordan-1-Retro-High-Dark-Mocha-2-Product.jpg?fit=fill&bg=FFFFFF&w=300&h=214&auto=format,compress&trim=color&q=90&dpr=2&updated_at=1606160687",
-            last_sale_price: 380,
-            lowest_ask_price: 210,
-            model: "Dark Mocha",
-            name: "Jordan 1 Retro High Dark Mocha",
-            product_category: "sneakers",
-            release_date: "2020-10-31",
-            url: "air-jordan-1-retro-high-dark-mocha",
-        }
+        // {
+        //     brand: "Jordan",
+        //     highest_bid_price: 396,
+        //     id: "air-jordan-1-retro-high-dark-mocha",
+        //     image_url: "https://stockx.imgix.net/images/Air-Jordan-1-Retro-High-Dark-Mocha-2-Product.jpg?fit=fill&bg=FFFFFF&w=700&h=500&auto=format,compress&trim=color&q=90&dpr=2&updated_at=1606160687",
+        //     image_url_small: "https://stockx.imgix.net/images/Air-Jordan-1-Retro-High-Dark-Mocha-2-Product.jpg?fit=fill&bg=FFFFFF&w=300&h=214&auto=format,compress&trim=color&q=90&dpr=2&updated_at=1606160687",
+        //     last_sale_price: 380,
+        //     lowest_ask_price: 210,
+        //     model: "Dark Mocha",
+        //     name: "Jordan 1 Retro High Dark Mocha",
+        //     product_category: "sneakers",
+        //     release_date: "2020-10-31",
+        //     url: "air-jordan-1-retro-high-dark-mocha",
+        // }
     ]
 };
 
@@ -42,16 +42,15 @@ app.get('/api/product_data', (req, res) => {
 })
 
 //POST a item from search-results section by click on it for add
-app.post('/api/action_item', (req, res) => {
+app.post('/api/action_search_results/:id', (req, res) => {
     //Server volition ?
-    
     const item = req.body;
     BASE.WISHLIST.push(item);
     res.status(201).json(item)
 })
 
-//DELETE a item from BASE
-app.delete('/api/action_item/:id', (req, res) => {
+//DELETE a item from WISHLIST BASE by Search Results section
+app.delete('/api/action_search_results/:id', (req, res) => {
     //Server volition ?
 
     BASE.WISHLIST = BASE.WISHLIST.filter(item => item.id !== req.params.id)
@@ -89,6 +88,24 @@ app.delete('/api/action_donelist/:id', (req, res) => {
         id: req.params.id,
         message: 'Donelist product has been delete'
     })
+})
+
+//POST a item from wishlist-section by click on it for add to donelist
+app.post('/api/action_wishlist/:id', (req, res) => {
+    //Server volition ?
+    
+    const item = req.body;
+    BASE.DONELIST.push(item);
+    res.status(201).json(item)
+})
+
+//POST a item from donelist-section by click on it for add to wishlist
+app.post('/api/action_donelist/:id', (req, res) => {
+    //Server volition ?
+    
+    const item = req.body;
+    BASE.WISHLIST.push(item);
+    res.status(201).json(item)
 })
 
 app.use(express.static(path.resolve(__dirname, 'dist')))

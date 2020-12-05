@@ -1,4 +1,4 @@
-import {ajaxRequest, searchById} from './helpers.js'
+import {addActionSection, ajaxRequest, removeActionSection, searchById} from './helpers.js'
 
 //Main state variable
 export const state = {
@@ -21,7 +21,6 @@ export const loadSearchResults = async (query) => {
         const searchResultsResponse = await ajaxRequest('/api/product_data');
 
         //Handling results from server and API StockX
-        // console.log(searchResultsResponse);
         if (searchResultsResponse) {
             state.search.query = query;
             state.search.results = searchResultsResponse.map(res => {
@@ -40,7 +39,6 @@ export const loadSearchResults = async (query) => {
                     highest_bid_price: res.highest_bid 
                 }
             });
-            // console.log(state.search.results);
         } else {
             state.search.results = [];
         }
@@ -53,18 +51,15 @@ export const loadSearchResults = async (query) => {
 //Model for the functional of adding/remove item to the Wishlist
 export const actionSearchResults = async (item) => {
     try {
-        //Searching item in search results list by ID
-        const itemForHandling = searchById(state.search.results, item);
-        
+        item.sectionName = 'search_results';
+
         if(item.action === 'add') {
-            const addItemResponce = await ajaxRequest('/api/action_item', 'POST', itemForHandling);
-            state.wishlist.push(addItemResponce);
+            state.wishlist = await addActionSection(state.search.results, state.wishlist, item);
         } else if (item.action === 'delete') {
-            const removeItemResponce = await ajaxRequest(`/api/action_item/${item.id}`, 'DELETE');
-            state.wishlist = state.wishlist.filter(productWishlist => productWishlist.id !== item.id);
+            state.wishlist = await removeActionSection(state.wishlist, item);
         }
     } catch (error) {
-        console.warn(`Something is wrong with the Wishlist Action model:`, error);
+        console.warn(`Something is wrong with the Search-Results Action model:`, error);
     }
 };
 
@@ -97,15 +92,20 @@ export const loadDonelist = async () => {
 export const actionSections = async(changedSection) => {
     try {
         if(changedSection.action === 'delete') {
-            const removeSectionItem = await ajaxRequest(`/api/action_${changedSection.sectionName}/${changedSection.itemID}`, `DELETE`);
-
             if(changedSection.sectionName === 'wishlist')
-            state.wishlist = state.wishlist.filter(productWishlist => productWishlist.id !== changedSection.itemID);
+            state.wishlist = await removeActionSection(state.wishlist, changedSection);
             else if(changedSection.sectionName === 'donelist')
-            state.donelist = state.donelist.filter(productDonelist => productDonelist.id !== changedSection.itemID);
+            state.donelist = await removeActionSection(state.donelist, changedSection);
         }
         else if(changedSection.action === 'add') {
-            const addSectionItem = await ajaxRequest('/api/action_item', 'POST', itemForHandling);
+            if(changedSection.sectionName === 'wishlist') {
+                state.donelist = await addActionSection(state.wishlist, state.donelist, changedSection);
+                state.wishlist = await removeActionSection(state.wishlist, changedSection);
+
+            } else if(changedSection.sectionName === 'donelist') {
+                state.wishlist = await addActionSection(state.donelist, state.wishlist, changedSection);
+                state.donelist = await removeActionSection(state.donelist, changedSection);
+            }
         }
     }
     catch (error) {

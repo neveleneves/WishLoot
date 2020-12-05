@@ -16,6 +16,10 @@ class WishlistView extends View {
             <h2 class="info-title">Wish-list is still empty</h2>
         `;
         this._sectionCards.innerHTML = '';
+        
+        const sectionEmpty = this._sectionTarget.querySelector('.info-title');
+        if(sectionEmpty) sectionEmpty.remove();
+        
         this._sectionCards.insertAdjacentHTML('afterend', emptyListMarkup);
     }
 
