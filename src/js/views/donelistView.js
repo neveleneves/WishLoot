@@ -32,7 +32,9 @@ class DonelistView extends View {
                         <img src="${dataCard.image_url}" alt="${dataCard.name}" class="">
                     </a>
                 </div>
-                <h3 class="product-title">${dataCard.name}</h3>
+                <div class="wrapper-product-title">
+                    <h3 class="product-title">${dataCard.name}</h3>
+                </div>
                 <div class="product-panel">
                     <div class="wrapper-remove-button">
                         <a class="remove-button product-button">
@@ -50,7 +52,7 @@ class DonelistView extends View {
                         </a>
                     </div>
                 </div>
-            </div>
+            </.div>
         `;
     }
 
