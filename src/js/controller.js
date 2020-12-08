@@ -119,6 +119,7 @@ const init = () => {
         searchView.addHandlerSearch(controlSearchResults);
         wishlistView.addHandlerWishlist(controlWishlist);
         donelistView.addHandlerDonelist(controlDonelist);
+        blogView.add
 
     } else if (window.location.pathname == '/index.html') {
 

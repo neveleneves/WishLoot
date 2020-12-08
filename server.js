@@ -1,31 +1,25 @@
 const express = require('express');
 const path = require('path')
 const app = express();
+
+const mongoose = require('mongoose')
+const keys = require('./keys')
+const postRouter = require('./routes/post')
+
 const StockXController = require('./server-assets')
 
-let inputValue;
+mongoose.connect(keys.mongoURI)
+    .then(() => console.log('MongoDB connected...'))
+    .catch(err => console.log(err))
 
+app.use('/api/post', postRouter)
+app.use(express.json())
+
+let inputValue;
 let BASE = {
     WISHLIST: [],
-    DONELIST: [
-        // {
-        //     brand: "Jordan",
-        //     highest_bid_price: 396,
-        //     id: "air-jordan-1-retro-high-dark-mocha",
-        //     image_url: "https://stockx.imgix.net/images/Air-Jordan-1-Retro-High-Dark-Mocha-2-Product.jpg?fit=fill&bg=FFFFFF&w=700&h=500&auto=format,compress&trim=color&q=90&dpr=2&updated_at=1606160687",
-        //     image_url_small: "https://stockx.imgix.net/images/Air-Jordan-1-Retro-High-Dark-Mocha-2-Product.jpg?fit=fill&bg=FFFFFF&w=300&h=214&auto=format,compress&trim=color&q=90&dpr=2&updated_at=1606160687",
-        //     last_sale_price: 380,
-        //     lowest_ask_price: 210,
-        //     model: "Dark Mocha",
-        //     name: "Jordan 1 Retro High Dark Mocha",
-        //     product_category: "sneakers",
-        //     release_date: "2020-10-31",
-        //     url: "air-jordan-1-retro-high-dark-mocha",
-        // }
-    ]
+    DONELIST: []
 };
-
-app.use(express.json())
 
 // POST a input-value
 app.post('/api/product_data', (req, res) => {
