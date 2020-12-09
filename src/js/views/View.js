@@ -31,6 +31,8 @@ export default class View {
 
             removeButton.addEventListener('click', () => {
                 this._contentMask.classList.add('content-mask-visable');
+                this._contentMask.querySelector('.remove-item-popup').classList.add('remove-item-popup-visable');
+
                 sectionAction.action = 'delete';
                 this.removeItemPopupHandler(item, handler, sectionAction);
             });
@@ -63,6 +65,7 @@ export default class View {
                     handler(sectionAction);
                 }
                 this._contentMask.classList.remove('content-mask-visable');
+                this._contentMask.querySelector('.remove-item-popup').classList.remove('remove-item-popup-visable');
             });
         });
     }

@@ -229,12 +229,16 @@ img {
     padding: 0px 20px;
 }
 .remove-item-popup {
+    display: none;
     margin: auto;
     margin-top: calc(50vh - 150px);
     max-width: 400px;
     height: 150px;
     background-color: #CECECE;
     border-radius: 3px;
+}
+.remove-item-popup-visable {
+    display: block;
 }
 .wrapper-remove-item{
     text-align: center;
@@ -278,6 +282,15 @@ img {
 }
 .success-remove:active, .cancel-remove:active {
     color: #00e1ff;
+}
+.blog-input-form {
+    display: none;
+    width: 300px; 
+    height: 600px; 
+    background-color: aqua;
+}
+.blog-input-form-visable {
+    display: block;
 }
 /* Assets Styles End*/
 
@@ -661,6 +674,9 @@ img {
     align-items: center;
     justify-content: center;
     margin-bottom: 35px;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;   
 }
 .post-button-body{
     padding: 8px 20px;

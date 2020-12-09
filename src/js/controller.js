@@ -3,6 +3,7 @@ import searchView from './views/searchView'
 import searchResultsView from './views/searchResultsView'
 import wishlistView from './views/wishlistView'
 import donelistView from './views/donelistView'
+import blogView from './views/blogView'
 
 //Main Controller for Search section
 const controlSearchResults = async () => {
@@ -76,7 +77,7 @@ const controlWishlist = async () => {
     }
 }
 
-//Controller for Action in Section Wishlist/Donelist 
+//Controller for Action in Section Donelist 
 const controlActionSectionDonelist= async (itemAction) => {
     try {
         //Changing the database on the server by item action
@@ -112,6 +113,27 @@ const controlDonelist = async () => {
     }
 }
 
+
+//Controller for Action in Section Blog 
+const controlActionSectionBlog = async () => {
+    try {
+        
+    } catch (error) {
+        console.warn(`Something is wrong with the Blog-Action-Section-controller:`, error);
+    }
+}
+
+//Controller for Blog Section
+const controlBlog = async () => {
+    try {
+        blogView.renderView(model.state.blog);
+
+        blogView.addHandlerActionSection(controlActionSectionBlog);
+    } catch (error) {
+        console.warn(`Something is wrong with the Blog-controller:`, error);
+    }
+}
+
 //Main function for executing project
 const init = () => {
     if (window.location.pathname == '/content.html') {
@@ -119,7 +141,7 @@ const init = () => {
         searchView.addHandlerSearch(controlSearchResults);
         wishlistView.addHandlerWishlist(controlWishlist);
         donelistView.addHandlerDonelist(controlDonelist);
-        blogView.add
+        blogView.addHandlerBlog(controlBlog);
 
     } else if (window.location.pathname == '/index.html') {
 

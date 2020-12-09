@@ -8,7 +8,8 @@ export const state = {
         results: [],
     },
     wishlist: [],
-    donelist: []
+    donelist: [],
+    blog: []
 };
 
 //Model for Search section
