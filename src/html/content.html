@@ -72,11 +72,24 @@
                     <!-- Pop-up Remove Item End -->  
                     
                     <div class="blog-input-form">
-                        <form action="" method="">
-                            <input type="file" multiple>
-                            <!-- <p>Drag your files here or click in this area.</p> -->
-                            <button type="submit">Upload</button>
-                        </form>
+                        <div class="wrapper-input-form">
+                            <h2 class="input-form-title">
+                                Your article
+                            </h2>
+                            <form action="" method="">
+                                <input type="file" multiple class="blog-file-input">
+                                <div class="line-blog"></div>
+                                <input type="text" autocomplete="off" class="blog-title-input" placeholder="Title">
+                                <!-- <input type="text" autocomplete="off" class="blog-article-input"  placeholder="Article Text..." > -->
+                                <textarea name="body-article" id="" cols="1" rows="10" class="blog-body-article" placeholder="Article text"></textarea>
+                                <!-- <p>Drag your files here or click in this area.</p>
+                                <button type="submit">Upload</button> -->
+                                <div class="wrapper-blog-post-nav">
+                                    <button class="blog-back-button" type="button">Back</button>
+                                    <button class="blog-post-button" type="button">Post</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

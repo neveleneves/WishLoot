@@ -39,7 +39,7 @@ img {
     justify-content: space-between;
 }
 .header-logo-link, .footer-logo-link{
-    margin-top: ;
+    /* margin-top: ; */
     display: flex;
     font-family: Montserrat Alternates;
     font-style: normal;
@@ -211,7 +211,7 @@ img {
     position: relative;
 }
 .content-mask{
-    display: none;
+    display: block;
     position: fixed;
     width: 100%;
     height: 100vh;
@@ -284,7 +284,7 @@ img {
     color: #00e1ff;
 }
 .blog-input-form {
-    display: none;
+    display: block;
     margin: auto;
     margin-top: calc(50vh - 425px);
     max-width: 550px;
@@ -295,25 +295,74 @@ img {
 .blog-input-form-visable {
     display: block;
 }
+.input-form-title {
+    padding-top: 15px;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.wrapper-input-form {
+    padding: 10px 40px;
+}
 .blog-input-form form{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-top: -100px;
-    margin-left: -250px;
-    width: 500px;
-    height: 200px;
-    border: 4px dashed #fff;
+    /* background-color: #000000;
+    height: 700px; */
 }
-.blog-input-form form input{
-    position: absolute;
-    margin: 0;
-    padding: 0;
+.blog-file-input{
     width: 100%;
-    height: 100%;
+    height: 200px;
     outline: none;
-    opacity: 0;
+    border: 3px dashed rgb(148, 148, 148);
+    margin-bottom: 15px;
 }
+.line-blog {
+    width: 100%;
+    height: 0px;
+    border: 1px solid #afafaf;
+    margin-bottom: 15px;
+}
+.blog-title-input {
+    width: 100%;
+    font-size: 15px;
+    padding: 2px 10px;
+    font-family: Montserrat;
+    font-style: normal;
+    line-height: 25px;
+    margin-bottom: 10px;
+    border: 0;
+}
+.blog-body-article {
+    width: 100%;
+    height: 320px;
+    max-height: 320px;
+    resize: none;
+    font-size: 15px;
+    font-family: Montserrat;
+    font-style: normal;
+    line-height: 18px;
+    padding: 5px 10px;
+    background-color: #ffffff;
+    margin-bottom: 10px;
+    border: 0;
+}
+.wrapper-blog-post-nav{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-around;
+}
+.blog-back-button, .blog-post-button {
+    padding: 3px;
+    width: 80px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    border: 0px;
+    border-radius: 2px;
+    color: #181818;
+}
+/*
 .blog-input-form form button{
     margin: 0;
     color: #fff;
@@ -334,7 +383,7 @@ img {
 }
 .blog-input-form form button:active{
     border:0;
-}
+} */
   
 /* Assets Styles End*/
 
