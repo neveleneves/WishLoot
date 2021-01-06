@@ -7,10 +7,6 @@ class BlogView extends View{
     
     _itemForAction;
 
-
-
-
-
     //Create markup for each card post from Blog
     _createMarkupSectionPreview(dataCard) {
         return `
@@ -51,8 +47,34 @@ class BlogView extends View{
         this._itemForAction.addEventListener('click', () => {
             this._contentMask.classList.add('content-mask-visable');
             this._contentMask.querySelector('.blog-input-form').classList.add('blog-input-form-visable');
+
+            this.blogPostPopupHandler(handler);
         });
     };
+
+    //Blog post handler
+    blogPostPopupHandler(handler) {
+        const blogPostPopup = this._contentMask.querySelector('.blog-input-form');
+        const backButton = blogPostPopup.querySelector('.blog-back-button'); 
+        const postButton = blogPostPopup.querySelector('.blog-post-button');
+
+        [backButton, postButton].forEach(elem => {
+            elem.addEventListener('click', () => {
+                if(elem.classList[0] === 'blog-back-button') {
+                    this._contentMask.classList.remove('content-mask-visable');
+                    this._contentMask.querySelector('.blog-input-form').classList.remove('blog-input-form-visable');
+
+                    blogPostPopup.querySelector('.blog-title-input').value = '';
+                    blogPostPopup.querySelector('.blog-body-article').value = '';
+
+                } 
+                else if(elem.classList[0] === 'blog-post-button') {
+                    //Send a data from fields to server
+                }
+            });
+        });
+        
+    }
 
     //Main handler for Blog View
     addHandlerBlog(handler) {

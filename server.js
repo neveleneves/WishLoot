@@ -8,9 +8,9 @@ const postRouter = require('./routes/post')
 
 const StockXController = require('./server-assets')
 
-mongoose.connect(keys.mongoURI)
-    .then(() => console.log('MongoDB connected...'))
-    .catch(err => console.log(err))
+// mongoose.connect(keys.mongoURI)
+//     .then(() => console.log('MongoDB connected...'))
+//     .catch(err => console.log(err))
 
 app.use('/api/post', postRouter)
 app.use(express.json())
