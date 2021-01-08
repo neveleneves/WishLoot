@@ -70,37 +70,39 @@
                         </div>
                     </div>
                     <!-- Pop-up Remove Item End -->  
-                    
                     <div class="blog-input-form">
                         <div class="wrapper-input-form">
                             <h2 class="input-form-title">
-                                Your article
+                                New article
                             </h2>
                             <form action="" method="">
+
                                 <div class="wrapper-input-file">
-                                    <input type="file" multiple class="blog-file-input">
+                                    <!-- <input type="file" multiple class="blog-file-input"> -->
+                                        <div class="image-upload-wrap">
+                                          <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+                                          <h3 class="image-input-title">DRAG A FILE OR SELECT ADD IMAGE</h3>
+                                          <h3 class="image-input-title-mobile">SELECT ADD IMAGE</h3>
+                                          <!-- <div class="drag-block">
+                                            <h3>Drag and drop a file or select add Image</h3>
+                                            <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M40 21.3334V58.6667M21.3334 40H58.6667M40 77.3333C19.3814 77.3333 2.66669 60.6186 2.66669 40C2.66669 19.3814 19.3814 2.66669 40 2.66669C60.6186 2.66669 77.3333 19.3814 77.3333 40C77.3333 60.6186 60.6186 77.3333 40 77.3333Z" stroke="#181818" stroke-width="3"/>
+                                            </svg> 
+                                          </div> -->
+                                        </div>
+                                        <div class="file-upload-content">
+                                          <img class="file-upload-image" src="#" alt="your image" />
+                                          <div class="image-title-wrap">
+                                            <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+                                          </div>
+                                        </div>
+
+                                        <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>
                                 </div>
+
                                 <div class="line-blog"></div>
 
-                                <!-- <div class="file-upload">
-                                    <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>
-                                  
-                                    <div class="image-upload-wrap">
-                                      <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
-                                      <div class="drag-text">
-                                        <h3>Drag and drop a file or select add Image</h3>
-                                      </div>
-                                    </div>
-                                    <div class="file-upload-content">
-                                      <img class="file-upload-image" src="#" alt="your image" />
-                                      <div class="image-title-wrap">
-                                        <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
-                                      </div>
-                                    </div>
-                                </div> -->
-
                                 <input type="text" autocomplete="off" class="blog-title-input" placeholder="Title">
-
 
                                 <!-- <input type="text" autocomplete="off" class="blog-article-input"  placeholder="Article Text..." > -->
                                 <textarea name="body-article" id="" cols="1" rows="10" class="blog-body-article" placeholder="Article text"></textarea>
