@@ -58,6 +58,8 @@ class BlogView extends View{
         const backButton = blogPostPopup.querySelector('.blog-back-button'); 
         const postButton = blogPostPopup.querySelector('.blog-post-button');
 
+        this.changeBlogForm(blogPostPopup);
+
         [backButton, postButton].forEach(elem => {
             elem.addEventListener('click', () => {
                 if(elem.classList[0] === 'blog-back-button') {
@@ -66,15 +68,43 @@ class BlogView extends View{
 
                     blogPostPopup.querySelector('.blog-title-input').value = '';
                     blogPostPopup.querySelector('.blog-body-article').value = '';
-
                 } 
                 else if(elem.classList[0] === 'blog-post-button') {
                     //Send a data from fields to server
                 }
             });
         });
-        
     }
+
+    changeBlogForm(handlingForm) {
+
+        const inputImageButton = handlingForm.querySelector('.file-upload-btn');
+        const inputImageField = handlingForm.querySelector('.file-upload-input');
+
+        inputImageButton.addEventListener('click', () => {
+            $('.file-upload-input').trigger( 'click' );
+        });
+
+        document.getElementById('blog-input-image').onchange = (elem) => {
+            var reader = new FileReader();
+
+            reader.onload = (e) => {
+                $('.image-upload-wrap').hide();
+                $('.file-upload-image').attr('src', e.target.result);
+                $('.file-upload-content').show();
+                // $('.image-title').html(elem.target.files[0].name);
+            };
+            reader.readAsDataURL(elem.target.files[0]);
+        }
+    }
+
+    // inputImage() {
+        
+    // };
+
+    // removeImage() {
+
+    // }
 
     //Main handler for Blog View
     addHandlerBlog(handler) {
