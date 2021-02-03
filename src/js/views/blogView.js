@@ -77,34 +77,51 @@ class BlogView extends View{
     }
 
     changeBlogForm(handlingForm) {
-
         const inputImageButton = handlingForm.querySelector('.file-upload-btn');
-        const inputImageField = handlingForm.querySelector('.file-upload-input');
+        const removeImageButton = handlingForm.querySelector('.remove-image');
 
         inputImageButton.addEventListener('click', () => {
             $('.file-upload-input').trigger( 'click' );
         });
 
-        document.getElementById('blog-input-image').onchange = (elem) => {
-            var reader = new FileReader();
+        this.uploadImage(removeImageButton);
+        this.removeImage(removeImageButton);
+        
+        $('.image-upload-wrap').bind('dragover', function () {
+            $('.image-upload-wrap').addClass('image-dropping');
+          });
 
-            reader.onload = (e) => {
-                $('.image-upload-wrap').hide();
-                $('.file-upload-image').attr('src', e.target.result);
-                $('.file-upload-content').show();
-                // $('.image-title').html(elem.target.files[0].name);
-            };
-            reader.readAsDataURL(elem.target.files[0]);
+        $('.image-upload-wrap').bind('dragleave', function () {
+            $('.image-upload-wrap').removeClass('image-dropping');
+        });
+    }
+    
+    uploadImage(removeButton) {
+        document.getElementById('blog-input-image').onchange = (elem) => {
+            if(elem.target.files && elem.target.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = (e) => {
+                    $('.image-upload-wrap').hide();
+                    $('.file-upload-btn').hide();
+                    $('.file-upload-image').attr('src', e.target.result);
+                    $('.file-upload-content').show();
+                };
+                reader.readAsDataURL(elem.target.files[0]);
+            } else {
+                this.removeImage(removeButton);
+            }
         }
     }
 
-    // inputImage() {
-        
-    // };
-
-    // removeImage() {
-
-    // }
+    removeImage(removeButton) {
+        removeButton.addEventListener('click', () => {
+            // $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+            $('.file-upload-content').hide();
+            $('.image-upload-wrap').show();
+            $('.file-upload-btn').show();
+        });
+    }
 
     //Main handler for Blog View
     addHandlerBlog(handler) {
