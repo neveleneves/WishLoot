@@ -9,17 +9,18 @@ class BlogView extends View{
 
     //Create markup for each card post from Blog
     _createMarkupSectionPreview(dataCard) {
+        console.log(dataCard);
         return `
-            <div class="example-blog-card">
+            <div class="example-blog-card" id="${dataCard._id}">
                 <div class="blog-image">
                     <a href="/" class="">
-                        <img src="${dataCard.image_url}" alt="" class="">
+                        <img src="${dataCard.img}" alt="" class="">
                     </a>
                 </div>
                 <div class="blog-post-panel">
-                    <h3 class="blog-post-title">${dataCard.title_post}</h3>
+                    <h3 class="blog-post-title">${dataCard.title}</h3>
                     <p class="blog-article-short">
-                        ${dataCard.body_article}
+                        ${dataCard.content}
                     </p>
                     <a href="/" class="blog-read-more-link">Read more</a>
                 </div>
@@ -70,7 +71,31 @@ class BlogView extends View{
                     blogPostPopup.querySelector('.blog-body-article').value = '';
                 } 
                 else if(elem.classList[0] === 'blog-post-button') {
-                    //Send a data from fields to server
+                    const blogCard = {
+                        img: blogPostPopup.querySelector('.file-upload-image').src,
+                        title: blogPostPopup.querySelector('.blog-title-input').value,
+                        content: blogPostPopup.querySelector('.blog-body-article').value,
+                        action: 'add',
+                        sectionName: this._sectionTarget.id
+                    };
+                    if(blogCard.img && blogCard.title && blogCard.content) {
+                        this._contentMask.classList.remove('content-mask-visable');
+                        handler(blogCard);
+                    }
+                    else {
+                        if (!blogCard.img) 
+                            blogPostPopup.querySelector('.image-upload-wrap').classList.add('image-upload-wrap-invalid');
+                        if (!blogCard.title)
+                            blogPostPopup.querySelector('.blog-title-input').classList.add('blog-title-input-invalid');
+                        if (!blogCard.content) 
+                            blogPostPopup.querySelector('.blog-body-article').classList.add('blog-body-article-invalid');
+
+                        setTimeout(() => { 
+                            blogPostPopup.querySelector('.image-upload-wrap').classList.remove('image-upload-wrap-invalid');
+                            blogPostPopup.querySelector('.blog-title-input').classList.remove('blog-title-input-invalid');
+                            blogPostPopup.querySelector('.blog-body-article').classList.remove('blog-body-article-invalid');
+                        }, 1500);
+                    }
                 }
             });
         });
@@ -120,6 +145,7 @@ class BlogView extends View{
             $('.file-upload-content').hide();
             $('.image-upload-wrap').show();
             $('.file-upload-btn').show();
+            $('.file-upload-image').attr('src', null);
         });
     }
 

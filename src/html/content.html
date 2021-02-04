@@ -80,12 +80,12 @@
                                 <div class="wrapper-input-file">
                                     <!-- <input type="file" multiple class="blog-file-input"> -->
                                         <div class="image-upload-wrap">
-                                          <input id="blog-input-image" class="file-upload-input" type='file' accept="image/*" />
+                                          <input id="blog-input-image" required class="file-upload-input" type='file' accept="image/*"/>
                                           <h3 class="image-input-title">DRAG A FILE OR SELECT ADD IMAGE</h3>
                                           <h3 class="image-input-title-mobile">SELECT ADD IMAGE</h3>
                                         </div>
                                         <div class="file-upload-content">
-                                          <img class="file-upload-image" src="#" alt="Uploaded Image" />
+                                          <img class="file-upload-image" alt="Uploaded Image" />
                                           <div class="image-title-wrap">
                                             <button type="button" class="remove-image">REMOVE IMAGE</button>
                                             </div>
@@ -95,15 +95,15 @@
 
                                 <div class="line-blog"></div>
 
-                                <input type="text" autocomplete="off" class="blog-title-input" placeholder="Title">
+                                <input type="text" autocomplete="off" class="blog-title-input" required  placeholder="Title">
 
                                 <!-- <input type="text" autocomplete="off" class="blog-article-input"  placeholder="Article Text..." > -->
-                                <textarea name="body-article" id="" cols="1" rows="10" class="blog-body-article" placeholder="Article text"></textarea>
+                                <textarea name="body-article" id="" cols="1" rows="10" class="blog-body-article" required  placeholder="Article text"></textarea>
                                 <!-- <p>Drag your files here or click in this area.</p>
                                 <button type="submit">Upload</button> -->
                                 <div class="wrapper-blog-post-nav">
                                     <button class="blog-back-button" type="button">Back</button>
-                                    <button class="blog-post-button" type="button">Post</button>
+                                    <button class="blog-post-button" type="submit">Post</button>
                                 </div>
                             </form>
                         </div>
@@ -322,13 +322,6 @@
                             </a>
                         </span>
                     </div>
-                    <div class="wrapper-blog-nav">
-                        <a class="add-post-button">
-                            <h3 class="post-button-body">
-                                Add a new post
-                            </h3>
-                        </a>
-                    </div>
                     <div class="wrapper-blog-cards">
                         <!-- <div class="example-blog-card">
                             <div class="blog-image">
@@ -360,6 +353,13 @@
                         </div> -->
                     </div>
                     <!-- <h2 class="info-title">Blog is still empty</h2> -->
+                    <div class="wrapper-blog-nav">
+                        <a class="add-post-button">
+                            <h3 class="post-button-body">
+                                Add a new post
+                            </h3>
+                        </a>
+                    </div>
                     <div class="end-section-line"></div>
                 </section>
                 <!-- Blog section End -->

@@ -3,6 +3,7 @@ const path = require('path')
 const app = express();
 
 const mongoose = require('mongoose')
+const bodyParser = require('body-parser')
 const keys = require('./keys')
 const postRouter = require('./routes/post')
 
@@ -12,13 +13,15 @@ mongoose.connect(keys.mongoURI)
     .then(() => console.log('MongoDB connected...'))
     .catch(err => console.log(err))
 
+app.use(bodyParser.json({limit: "50mb"}));
+app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
 app.use('/api/post', postRouter)
 app.use(express.json())
 
 let inputValue;
 let BASE = {
     WISHLIST: [],
-    DONELIST: []
+    DONELIST: [],
 };
 
 // POST a input-value

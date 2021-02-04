@@ -6,6 +6,7 @@ export const ajaxRequest = async function (url, method = 'GET', data = null) {
 
         if (data) {
             headers['Content-Type'] = 'application/json';
+            headers['Accept'] = 'application/json';
             body = JSON.stringify(data);
         }
 
@@ -14,6 +15,7 @@ export const ajaxRequest = async function (url, method = 'GET', data = null) {
             headers,
             body
         });
+
         return await response.json();
     } catch (err) {
         // console.warn(err);
@@ -51,4 +53,20 @@ export const removeActionSection = async function (stateFromSection, item) {
 
     stateFromSection = stateFromSection.filter(productWishlist => productWishlist.id !== item.id);
     return stateFromSection;
+}
+
+export const actionBlogPost = async function (postObj, stateSection) {
+    const postForHandling = {
+        img: postObj.img,
+        title: postObj.title,
+        content: postObj.content
+    };
+
+    if(postObj.action === 'add') {
+        const addBlogPost = await ajaxRequest(`/api/post`, `POST`, postForHandling);
+        stateSection.push(addBlogPost);
+        return stateSection;
+    } else if (postObj.action === 'delete') {
+
+    }
 }

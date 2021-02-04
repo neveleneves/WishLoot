@@ -115,9 +115,12 @@ const controlDonelist = async () => {
 
 
 //Controller for Action in Section Blog 
-const controlActionSectionBlog = async () => {
+const controlActionSectionBlog = async (blogCard) => {
     try {
-        
+        await model.actionSections(blogCard);
+
+        await blogView.renderView(model.state.blog);
+
     } catch (error) {
         console.warn(`Something is wrong with the Blog-Action-Section-controller:`, error);
     }
@@ -126,7 +129,9 @@ const controlActionSectionBlog = async () => {
 //Controller for Blog Section
 const controlBlog = async () => {
     try {
-        blogView.renderView(model.state.blog);
+        await model.loadBloglist();
+
+        await blogView.renderView(model.state.blog);
 
         blogView.addHandlerActionSection(controlActionSectionBlog);
     } catch (error) {

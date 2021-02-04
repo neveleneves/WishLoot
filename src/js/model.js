@@ -1,4 +1,4 @@
-import {addActionSection, ajaxRequest, removeActionSection, searchById} from './helpers.js'
+import {addActionSection, ajaxRequest, removeActionSection, searchById, actionBlogPost} from './helpers.js'
 
 //Main state variable
 export const state = {
@@ -89,14 +89,28 @@ export const loadDonelist = async () => {
     }
 };
 
+//Model for the load Blog
+export const loadBloglist = async () => {
+    try {
+        const bloglistBase =  await ajaxRequest('/api/post');
+        if(bloglistBase) {
+            state.blog = bloglistBase;
+        } 
+    } catch (error) {
+        console.warn(`Something is wrong with the Load Blog model:`, error);
+    }
+};
+
 //Model for the functional of Sections
 export const actionSections = async(changedSection) => {
     try {
         if(changedSection.action === 'delete') {
             if(changedSection.sectionName === 'wishlist')
-            state.wishlist = await removeActionSection(state.wishlist, changedSection);
+                state.wishlist = await removeActionSection(state.wishlist, changedSection);
             else if(changedSection.sectionName === 'donelist')
-            state.donelist = await removeActionSection(state.donelist, changedSection);
+                state.donelist = await removeActionSection(state.donelist, changedSection);
+            else if(changedSection.sectionName === 'blog') 
+                state.blog = await actionBlogPost(changedSection, state.blog);
         }
         else if(changedSection.action === 'add') {
             if(changedSection.sectionName === 'wishlist') {
@@ -106,7 +120,10 @@ export const actionSections = async(changedSection) => {
             } else if(changedSection.sectionName === 'donelist') {
                 state.wishlist = await addActionSection(state.donelist, state.wishlist, changedSection);
                 state.donelist = await removeActionSection(state.donelist, changedSection);
+            } else if(changedSection.sectionName === 'blog') {
+                state.blog = await actionBlogPost(changedSection, state.blog);
             }
+
         }
     }
     catch (error) {
