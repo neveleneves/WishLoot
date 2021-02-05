@@ -25,8 +25,7 @@ const controlSearchResults = async () => {
 //Controller for Wishlist Action
 const controlSearchResultsAction = async (itemWishlist) => {
     try {
-        if(!itemWishlist) 
-        return;
+        if(!itemWishlist) return;
 
         //Changing the database on the server
         await model.actionSearchResults(itemWishlist);

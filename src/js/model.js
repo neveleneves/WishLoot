@@ -52,8 +52,6 @@ export const loadSearchResults = async (query) => {
 //Model for the functional of adding/remove item to the Wishlist
 export const actionSearchResults = async (item) => {
     try {
-        item.sectionName = 'search_results';
-
         if(item.action === 'add') {
             state.wishlist = await addActionSection(state.search.results, state.wishlist, item);
         } else if (item.action === 'delete') {
@@ -67,7 +65,7 @@ export const actionSearchResults = async (item) => {
 //Model for the load Wishlist
 export const loadWishlist = async () => {
     try {
-        const wishlistBase =  await ajaxRequest('/api/wishlist_data');
+        const wishlistBase =  await ajaxRequest('/api/wishlist-data');
         
         if(wishlistBase) {
             state.wishlist = wishlistBase;
@@ -80,7 +78,7 @@ export const loadWishlist = async () => {
 //Model for the load Donelist
 export const loadDonelist = async () => {
     try {
-        const donelistBase =  await ajaxRequest('/api/donelist_data');
+        const donelistBase =  await ajaxRequest('/api/donelist-data');
         if(donelistBase) {
             state.donelist = donelistBase;
         } 
@@ -92,7 +90,7 @@ export const loadDonelist = async () => {
 //Model for the load Blog
 export const loadBloglist = async () => {
     try {
-        const bloglistBase =  await ajaxRequest('/api/post');
+        const bloglistBase =  await ajaxRequest('/api/blog');
         if(bloglistBase) {
             state.blog = bloglistBase;
         } 
@@ -114,13 +112,18 @@ export const actionSections = async(changedSection) => {
         }
         else if(changedSection.action === 'add') {
             if(changedSection.sectionName === 'wishlist') {
+                changedSection.sectionName = 'donelist';
                 state.donelist = await addActionSection(state.wishlist, state.donelist, changedSection);
+                changedSection.sectionName = 'wishlist';
                 state.wishlist = await removeActionSection(state.wishlist, changedSection);
-
-            } else if(changedSection.sectionName === 'donelist') {
+            } 
+            else if(changedSection.sectionName === 'donelist') {
+                changedSection.sectionName = 'wishlist';
                 state.wishlist = await addActionSection(state.donelist, state.wishlist, changedSection);
+                changedSection.sectionName = 'donelist';
                 state.donelist = await removeActionSection(state.donelist, changedSection);
-            } else if(changedSection.sectionName === 'blog') {
+            } 
+            else if(changedSection.sectionName === 'blog') {
                 state.blog = await actionBlogPost(changedSection, state.blog);
             }
 

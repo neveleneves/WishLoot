@@ -816,6 +816,7 @@ textarea:invalid {
 }
 .product-button:hover {
     opacity: 0.7;
+    cursor: pointer;
 }
 .info-title{
     font-family: Montserrat;
@@ -850,29 +851,43 @@ textarea:invalid {
 .wrapper-blog-cards{
     display: grid;
     grid-template-columns: repeat(4, 2fr);
-    column-gap: 20px;
+    column-gap: 30px;
     row-gap: 30px;
     margin-bottom: 35px;
 }
 /* If the count block is n%2=0*/
 .example-blog-card{
     grid-column: span 2;
-    height: 450px;
+    height: 550px;
     background-color: #ebebeb; 
 }
 /* If the count block is n%2=1*/
-.example-blog-card:nth-child(3n){
+/* .example-blog-card:nth-child(3n){
     grid-column-start: 2;
     grid-column-end: 4;
-}
+} */
 .blog-image{
+    position: relative;
     margin-bottom: 5px;
+    overflow: hidden;
+    height: 320px;
+}
+.image-link:hover .image-post-blog {
+    transform: scale(1.05)
+}
+.image-post-blog{
+    /* top: -50%; */
+    position: absolute;
+    min-height: 350px;
+    object-fit: cover;
+    transition: ease 0.2s;
 }
 .blog-post-panel{
     padding: 10px 15px;
+    position: relative;
+    height: 225px;
 }
 .blog-post-title{
-    
     font-family: Montserrat;
     font-style: normal;
     font-weight: 600;
@@ -881,6 +896,12 @@ textarea:invalid {
     color: #303030;
     text-align: center;
     margin-bottom: 15px;
+
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; 
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 .blog-article-short{
     font-family: Montserrat;
@@ -890,7 +911,12 @@ textarea:invalid {
     line-height: 18px;
     text-align: justify;
     color: #303030;
-    margin-bottom: 50px;
+
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 6; 
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 .blog-read-more-link{
     font-family: Montserrat;
@@ -898,7 +924,15 @@ textarea:invalid {
     font-weight: bold;
     font-size: 14px;
     line-height: 18px;
-    color: #303030;
+    color: #070C16;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+}
+.blog-read-more-link:hover { 
+    color: #00b6ce;
+    /* border-bottom: 4px solid #00e1ff; */
+    transition: all .2s ease;
 }
 .wrapper-blog-nav{
     display: flex;

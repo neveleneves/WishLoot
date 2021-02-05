@@ -39,9 +39,8 @@ export const searchById = (parentList, item) => {
 //Action "add" by clicking on the button from the card
 export const addActionSection = async function (stateFromSection, stateToSection, item) {
     let itemForHandling = searchById(stateFromSection, item);
-
-    console.log('action_' + item.sectionName);
-    const addSectionItem = await ajaxRequest(`/api/action_${item.sectionName}/${item.id}`, `POST`, itemForHandling);
+    // const addSectionItem = await ajaxRequest(`/api/action_${item.sectionName}/${item.id}`, `POST`, itemForHandling);
+    const addSectionItem = await ajaxRequest(`/api/${item.sectionName}-data`, `POST`, itemForHandling);
 
     stateToSection.push(addSectionItem);
     return stateToSection;
@@ -49,7 +48,7 @@ export const addActionSection = async function (stateFromSection, stateToSection
 
 //Action "remove" by clicking on the button from the card
 export const removeActionSection = async function (stateFromSection, item) {
-    const removeSectionItem = await ajaxRequest(`/api/action_${item.sectionName}/${item.id}`, `DELETE`);
+    const removeSectionItem = await ajaxRequest(`/api/${item.sectionName}-data/${item.id}`, `DELETE`);
 
     stateFromSection = stateFromSection.filter(productWishlist => productWishlist.id !== item.id);
     return stateFromSection;
@@ -63,7 +62,7 @@ export const actionBlogPost = async function (postObj, stateSection) {
     };
 
     if(postObj.action === 'add') {
-        const addBlogPost = await ajaxRequest(`/api/post`, `POST`, postForHandling);
+        const addBlogPost = await ajaxRequest(`/api/blog`, `POST`, postForHandling);
         stateSection.push(addBlogPost);
         return stateSection;
     } else if (postObj.action === 'delete') {

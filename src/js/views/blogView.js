@@ -13,8 +13,8 @@ class BlogView extends View{
         return `
             <div class="example-blog-card" id="${dataCard._id}">
                 <div class="blog-image">
-                    <a href="/" class="">
-                        <img src="${dataCard.img}" alt="" class="">
+                    <a href="/" class="image-link">
+                        <img src="${dataCard.img}" alt="" class="image-post-blog">
                     </a>
                 </div>
                 <div class="blog-post-panel">
