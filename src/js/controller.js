@@ -66,6 +66,8 @@ const controlWishlist = async () => {
         //Catch Wishlist from database on server
         await model.loadWishlist();
 
+        await wishlistView.assetsLoader();
+
         //Rendering Wishlist section
         await wishlistView.renderView(model.state.wishlist);
 
@@ -102,6 +104,9 @@ const controlDonelist = async () => {
         //Catch Donelist from database on server
         await model.loadDonelist();
 
+        //
+        await donelistView.assetsLoader();
+
         //Rendering Donelist section
         await donelistView.renderView(model.state.donelist);
 
@@ -111,7 +116,6 @@ const controlDonelist = async () => {
         console.warn(`Something is wrong with the Donelist-controller:`, error);
     }
 }
-
 
 //Controller for Action in Section Blog 
 const controlActionSectionBlog = async (blogCard) => {
@@ -129,6 +133,8 @@ const controlActionSectionBlog = async (blogCard) => {
 const controlBlog = async () => {
     try {
         await model.loadBloglist();
+
+        await blogView.assetsLoader();
 
         await blogView.renderView(model.state.blog);
 

@@ -1,7 +1,29 @@
 export default class View {
+    //Pre-loader for sections 
+    assetsLoader() { 
+        this._sectionTarget.querySelector('.lds-ellipsis').classList.add('lds-ellipsis-none');
+    }
+
+    //Handler for Seemore link 
+    assetsSeemore(data){
+        const seeMoreLink = this._sectionTarget.querySelector('.see-more-link');
+
+        if (data.length > 4) {
+            this._sectionCards.classList.add('wrapper-product-cards-more');
+
+            seeMoreLink.addEventListener('click', () => {
+                this._sectionCards.classList.toggle('see-more-link-active');
+            });
+        } else {
+            this._sectionCards.classList.remove('wrapper-product-cards-more');
+        }
+    }
+
     //Main method for render Wishlist section
     renderView(data) {
         if(!data || (Array.isArray(data) && data.length === 0)) return this._sectionEmptyMarkup();
+
+        this.assetsSeemore(data);
 
         this._titleMain = this._sectionTarget.querySelector('.info-title');
         this._sectionDatabase = data;
@@ -87,6 +109,8 @@ export default class View {
 
         return sectionChanged;
     }
+
+
 
     //Main handler for Action in Section
     addHandlerActionSection(handler) {
