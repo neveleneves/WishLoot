@@ -826,18 +826,17 @@ textarea:invalid {
     row-gap: 20px;
     margin-bottom: 35px;
     transition: max-height ease 1.5s;
-}
-.wrapper-product-cards-more {
+    padding: 0px 4px 4px;
     max-height: 255px;
     overflow-y: hidden;
 }
 .see-more-link-active {
-    max-height: 5000px;
+    max-height: 2000px;
 }
 .example-product-card{
     grid-column: span 1;
     height: 250px;
-    background-color: #f0f0f0;
+    background-color: #ebebeb;
     border-radius: 3px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
     position: relative;
@@ -928,10 +927,16 @@ textarea:invalid {
 }
 .wrapper-blog-cards{
     display: grid;
-    grid-template-columns: repeat(4, 2fr);
+    grid-template-columns: repeat(6, 2fr);
     column-gap: 30px;
     row-gap: 30px;
     margin-bottom: 35px;
+    transition: max-height ease 1.5s;
+    max-height: 550px;
+    overflow-y: hidden;
+}
+.see-more-link-blog-active {
+    max-height: 4000px;
 }
 /* If the count block is n%2=0*/
 .example-blog-card{

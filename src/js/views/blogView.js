@@ -7,6 +7,12 @@ class BlogView extends View{
     
     _itemForAction;
 
+    _assetsSeemoreBlog() {
+        this._sectionTarget.querySelector('.see-more-link').addEventListener('click', () => {
+            this._sectionCards.classList.toggle('see-more-link-blog-active');
+        });
+    }
+
     //Create markup for each card post from Blog
     _createMarkupSectionPreview(dataCard) {
         console.log(dataCard);

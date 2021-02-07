@@ -4,51 +4,51 @@ const Schema = mongoose.Schema
 const wishlistItemSchema = new Schema ({
     id: {
         type: String,
-        required :true
+        required :false
     },
     url: {
         type: String,
-        required :true
+        required :false
     },
     name:{
         type: String,
-        required :true
+        required :false
     },
     model: {
         type: String,
-        required :true
+        required :false
     },
     brand: {
         type: String,
-        required :true
+        required :false
     },
     image_url: {
         type: String,
-        required :true
+        required :false
     },
     image_url_small: {
         type: String,
-        required :true
+        required :false
     },
     release_date: {
         type: String,
-        required :true
+        required :false
     },
     product_category: {
         type: String,
-        required :true
+        required :false
     },
     last_sale_price: {
         type: Number,
-        required :true
+        required :false
     }, 
     lowest_ask_price: {
         type: Number,
-        required :true
+        required :false
     },
     highest_bid_price: {
         type: Number,
-        required :true
+        required :false
     },
 })
 module.exports = mongoose.model('wishlist-cards', wishlistItemSchema)

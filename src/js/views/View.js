@@ -1,3 +1,5 @@
+import { contains } from "jquery";
+
 export default class View {
     //Pre-loader for sections 
     assetsLoader() { 
@@ -5,25 +7,35 @@ export default class View {
     }
 
     //Handler for Seemore link 
-    assetsSeemore(data){
-        const seeMoreLink = this._sectionTarget.querySelector('.see-more-link');
+    // assetsSeemore(){
+    //     const sectionsAll = document.querySelectorAll('section');
 
-        if (data.length > 4) {
-            this._sectionCards.classList.add('wrapper-product-cards-more');
+    //     sectionsAll.forEach(elem => {
+    //         if(elem.querySelector('.see-more-link'))
+    //         elem.querySelector('.see-more-link').addEventListener('click', () => {
+    //             if(elem.querySelector('.wrapper-product-cards').classList.contains('see-more-link-active')) {
+    //                 console.log(elem + `REMOVING`);
+    //                 elem.querySelector('.wrapper-product-cards').classList.remove('see-more-link-active');
+    //             }
+    //             else {
+    //                 console.log(elem + `ADDING`);
+    //                 elem.querySelector('.wrapper-product-cards').classList.add('see-more-link-active');
+    //             }
 
-            seeMoreLink.addEventListener('click', () => {
-                this._sectionCards.classList.toggle('see-more-link-active');
-            });
-        } else {
-            this._sectionCards.classList.remove('wrapper-product-cards-more');
-        }
+    //         });
+    //     })
+    // }
+
+    //Handler for Seemore link 
+    assetsSeemore(){
+        this._sectionTarget.querySelector('.see-more-link').addEventListener('click', () => {
+            this._sectionCards.classList.toggle('see-more-link-active');
+        });
     }
 
     //Main method for render Wishlist section
     renderView(data) {
         if(!data || (Array.isArray(data) && data.length === 0)) return this._sectionEmptyMarkup();
-
-        this.assetsSeemore(data);
 
         this._titleMain = this._sectionTarget.querySelector('.info-title');
         this._sectionDatabase = data;

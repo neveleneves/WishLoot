@@ -67,10 +67,10 @@ const controlWishlist = async () => {
         await model.loadWishlist();
 
         await wishlistView.assetsLoader();
-
         //Rendering Wishlist section
         await wishlistView.renderView(model.state.wishlist);
 
+        wishlistView.assetsSeemore();
         //Handler for wishlist Section action
         wishlistView.addHandlerActionSection(controlActionSectionWishlist);
     } catch (error) {
@@ -106,10 +106,10 @@ const controlDonelist = async () => {
 
         //
         await donelistView.assetsLoader();
-
         //Rendering Donelist section
         await donelistView.renderView(model.state.donelist);
 
+        donelistView.assetsSeemore();
         //Handler for donelist Section action
         donelistView.addHandlerActionSection(controlActionSectionDonelist);
     } catch (error) {
@@ -137,6 +137,8 @@ const controlBlog = async () => {
         await blogView.assetsLoader();
 
         await blogView.renderView(model.state.blog);
+
+        blogView._assetsSeemoreBlog();
 
         blogView.addHandlerActionSection(controlActionSectionBlog);
     } catch (error) {
