@@ -106,10 +106,12 @@ const controlDonelist = async () => {
 
         //
         await donelistView.assetsLoader();
+
         //Rendering Donelist section
         await donelistView.renderView(model.state.donelist);
 
         donelistView.assetsSeemore();
+
         //Handler for donelist Section action
         donelistView.addHandlerActionSection(controlActionSectionDonelist);
     } catch (error) {

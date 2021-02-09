@@ -25,10 +25,12 @@ class BlogView extends View{
                 </div>
                 <div class="blog-post-panel">
                     <h3 class="blog-post-title">${dataCard.title}</h3>
-                    <p class="blog-article-short">
-                        ${dataCard.content}
-                    </p>
-                    <a href="/" class="blog-read-more-link">Read more</a>
+                    <div class="wrapper-blog-article-short">
+                        <p class="blog-article-short">
+                                ${dataCard.content}
+                        </p>
+                    </div>
+                    <a class="blog-read-more-link">Read more</a>
                 </div>
             </div>
         `;
@@ -57,7 +59,59 @@ class BlogView extends View{
 
             this.blogPostPopupHandler(handler);
         });
+
+        this.readMorePostBlog();
     };
+
+    //Logic for "Read more" func
+    readMorePostBlog() {
+        const blogPosts = this._sectionCards.querySelectorAll('.example-blog-card');
+
+        for(let i=0; i < blogPosts.length; i++) {
+            blogPosts[i].querySelector('.blog-read-more-link').addEventListener('click', () => {
+                if(!blogPosts[i].classList.contains('example-blog-card-readmore'))
+                    this.defaultPostBlog();
+
+                blogPosts[i].classList.toggle('example-blog-card-readmore');
+                blogPosts[i].querySelector('.blog-image').classList.toggle('blog-image-readmore');
+                blogPosts[i].querySelector('.image-post-blog').classList.toggle('image-post-blog-readmore');
+                blogPosts[i].querySelector('.blog-post-panel').classList.toggle('blog-post-panel-readmore');
+                blogPosts[i].querySelector('.wrapper-blog-article-short').classList.toggle('wrapper-blog-article-short-readmore');
+
+                if (blogPosts[i].classList.contains('example-blog-card-readmore'))
+                    blogPosts[i].querySelector('.blog-read-more-link').textContent = 'Hide article';
+                else 
+                    blogPosts[i].querySelector('.blog-read-more-link').textContent = 'Read more';
+
+                if(!this._sectionCards.classList.contains('see-more-link-blog-active'))
+                    this._sectionCards.classList.add('see-more-link-blog-active');
+
+                if(i % 2 === 1) {
+                    if(blogPosts[i-1]) blogPosts[i-1].classList.toggle('example-blog-card-readmore-odd-even');
+                    if(blogPosts[i+1]) blogPosts[i+1].classList.toggle('example-blog-card-readmore-odd-even');
+                } else if(i % 2 === 0) {
+                    if(blogPosts[i+1]) blogPosts[i+1].classList.toggle('example-blog-card-readmore-odd-even');
+                    if(blogPosts[i+2]) blogPosts[i+2].classList.toggle('example-blog-card-readmore-odd-even');
+                } 
+            });
+        }
+    }
+
+    defaultPostBlog() {
+        const posts = this._sectionCards.querySelectorAll('.example-blog-card');
+        posts.forEach(post => {
+            console.log("123123123");
+                post.classList.remove('example-blog-card-readmore');
+                post.classList.remove('example-blog-card-readmore-odd-even');
+                post.querySelector('.blog-image').classList.remove('blog-image-readmore');
+                post.querySelector('.image-post-blog').classList.remove('image-post-blog-readmore');
+                post.querySelector('.blog-post-panel').classList.remove('blog-post-panel-readmore');
+                post.querySelector('.wrapper-blog-article-short').classList.remove('wrapper-blog-article-short-readmore');
+
+                post.querySelector('.blog-read-more-link').textContent = 'Read more';
+        });
+    }
+
 
     //Blog post handler
     blogPostPopupHandler(handler) {
@@ -75,6 +129,9 @@ class BlogView extends View{
 
                     blogPostPopup.querySelector('.blog-title-input').value = '';
                     blogPostPopup.querySelector('.blog-body-article').value = '';
+                    if(blogPostPopup.querySelector('.remove-image'))
+                        $('.remove-image').trigger( 'click' );
+                    
                 } 
                 else if(elem.classList[0] === 'blog-post-button') {
                     const blogCard = {

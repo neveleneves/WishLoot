@@ -75,9 +75,10 @@ img {
     line-height: 18px;
     color: #ffffff;
 }
-.header-link:hover, .header-link:focus,.header-link:active {
+.header-link:hover, .header-link:focus, .header-link:active, .footer-link:hover, .footer-link:focus, .footer-link:active{
     opacity: .9;
     color: #00e1ff;
+    transition: all .2s ease;
 }
 .line-menu{
     display: block;
@@ -831,7 +832,7 @@ textarea:invalid {
     overflow-y: hidden;
 }
 .see-more-link-active {
-    max-height: 2000px;
+    max-height: 3000px;
 }
 .example-product-card{
     grid-column: span 1;
@@ -927,7 +928,7 @@ textarea:invalid {
 }
 .wrapper-blog-cards{
     display: grid;
-    grid-template-columns: repeat(6, 2fr);
+    grid-template-columns: repeat(6, 3fr);
     column-gap: 30px;
     row-gap: 30px;
     margin-bottom: 35px;
@@ -936,13 +937,14 @@ textarea:invalid {
     overflow-y: hidden;
 }
 .see-more-link-blog-active {
-    max-height: 4000px;
+    max-height: 5000px;
 }
 /* If the count block is n%2=0*/
 .example-blog-card{
-    grid-column: span 2;
+    grid-column: span 3;
     height: 550px;
     background-color: #ebebeb; 
+    transition: all ease 1.5s;
 }
 /* If the count block is n%2=1*/
 /* .example-blog-card:nth-child(3n){
@@ -954,6 +956,10 @@ textarea:invalid {
     margin-bottom: 5px;
     overflow: hidden;
     height: 320px;
+    transition: height ease 1.5s;
+}
+.blog-image-readmore {
+    height: 550px;
 }
 .image-link:hover .image-post-blog {
     transform: scale(1.05)
@@ -961,14 +967,21 @@ textarea:invalid {
 .image-post-blog{
     /* top: -50%; */
     position: absolute;
-    min-height: 350px;
+    min-height: 450px;
     object-fit: cover;
-    transition: ease 0.2s;
+    transition: min-height ease 1.5s;
+}
+.image-post-blog-readmore {
+    min-height: 550px;
 }
 .blog-post-panel{
     padding: 10px 15px;
     position: relative;
     height: 225px;
+    transition: all 1.5s ease;
+}
+.blog-post-panel-readmore {
+    height: 575px;
 }
 .blog-post-title{
     font-family: Montserrat;
@@ -986,6 +999,14 @@ textarea:invalid {
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
+.wrapper-blog-article-short {
+    max-height: 110px;
+    overflow: hidden;
+    transition: max-height ease 1.5s;
+}
+.wrapper-blog-article-short-readmore {
+    max-height: 450px;
+}
 .blog-article-short{
     font-family: Montserrat;
     font-style: normal;
@@ -995,11 +1016,11 @@ textarea:invalid {
     text-align: justify;
     color: #303030;
 
-    text-overflow: ellipsis;
+    /* text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 6; 
     -webkit-box-orient: vertical;
-    overflow: hidden;
+    overflow: hidden; */
 }
 .blog-read-more-link{
     font-family: Montserrat;
@@ -1011,7 +1032,32 @@ textarea:invalid {
     position: absolute;
     bottom: 15px;
     right: 15px;
+    cursor: pointer;
 }
+.example-blog-card-readmore{
+    /* grid-column: span 4; */
+    height: 1130px;
+}
+.example-blog-card-readmore:nth-child(odd){
+    grid-column: 1 / 5;
+    grid-row: span 2;
+}
+.example-blog-card-readmore:nth-child(even){
+    grid-column: 3 / 7;
+    grid-row: span 2;
+}
+.example-blog-card-readmore-odd-even {
+    grid-column: span 2;
+}
+/* .example-blog-card-readmore:nth-child(3n){
+    grid-row: auto / 2 span;
+    grid-column: 3 / 7;
+} */
+/* If the count block is n%2=1*/
+/* .example-blog-card:nth-child(3n){
+    grid-column-start: 2;
+    grid-column-end: 4;
+} */
 .blog-read-more-link:hover { 
     color: #00b6ce;
     /* border-bottom: 4px solid #00e1ff; */

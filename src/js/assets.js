@@ -92,7 +92,7 @@
 
 //Animation for header-menu
 (function(){
-    $('nav ul li').hover(function(){
+    $('.header-nav .header-list li').hover(function(){
         let navOffset = $(this).position().left;
 
         $('.pick-line-menu').toggleClass('pick-line-menu-active');
