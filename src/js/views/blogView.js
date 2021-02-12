@@ -100,7 +100,6 @@ class BlogView extends View{
     defaultPostBlog() {
         const posts = this._sectionCards.querySelectorAll('.example-blog-card');
         posts.forEach(post => {
-            console.log("123123123");
                 post.classList.remove('example-blog-card-readmore');
                 post.classList.remove('example-blog-card-readmore-odd-even');
                 post.querySelector('.blog-image').classList.remove('blog-image-readmore');

@@ -12,7 +12,7 @@ const donelistRouter = require('./routes/donelist')
 
 const StockXController = require('./server-assets')
 
-mongoose.connect(keys.mongoURI)
+mongoose.connect(keys.mongoURI, {useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => console.log('MongoDB connected...'))
     .catch(err => console.log(err))
 
