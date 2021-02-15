@@ -957,17 +957,19 @@ textarea:invalid {
     height: 550px;
 }
 .image-link:hover .image-post-blog {
-    transform: scale(1.05)
+    /* transform: scale(1.05) */
 }
 .image-post-blog{
     /* top: -50%; */
     position: absolute;
     min-height: 450px;
+    width: 100%;
     object-fit: cover;
     transition: min-height ease 1.5s;
 }
 .image-post-blog-readmore {
     min-height: 550px;
+    width: 100%;
 }
 .blog-post-panel{
     padding: 10px 15px;
@@ -1089,7 +1091,7 @@ textarea:invalid {
 .content-footer{
     position: relative;
     background-color: #070C16;
-    z-index: 1000;
+    z-index: 500;
 }
 .footer-wrapper-menu{
     max-width: 1678px;
