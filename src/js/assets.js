@@ -4,6 +4,7 @@
         const burgerMenu = document.querySelector('.burger');
         const menu = document.querySelector('.header-nav');
         const burgerMenuClose = document.querySelector('.header-burger-close');
+        const listMenu = menu.querySelectorAll('.header-item');
 
         const searchBlockState = document.getElementById('search-state');
         const searchBlock = document.querySelector('.search-form-adaptive');
@@ -14,6 +15,11 @@
         });
         burgerMenuClose.addEventListener('click', () => {
             menu.classList.remove('header-nav-active');
+        });
+        listMenu.forEach(item => {
+            item.addEventListener('click', () => {
+                menu.classList.remove('header-nav-active');
+            });
         });
     }
 }());

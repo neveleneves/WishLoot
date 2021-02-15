@@ -10,12 +10,13 @@ class BlogView extends View{
     _assetsSeemoreBlog() {
         this._sectionTarget.querySelector('.see-more-link').addEventListener('click', () => {
             this._sectionCards.classList.toggle('see-more-link-blog-active');
+
+            this.defaultPostBlog();
         });
     }
 
     //Create markup for each card post from Blog
     _createMarkupSectionPreview(dataCard) {
-        console.log(dataCard);
         return `
             <div class="example-blog-card" id="${dataCard._id}">
                 <div class="blog-image">

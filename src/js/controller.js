@@ -156,9 +156,6 @@ const init = () => {
         wishlistView.addHandlerWishlist(controlWishlist);
         donelistView.addHandlerDonelist(controlDonelist);
         blogView.addHandlerBlog(controlBlog);
-
-    } else if (window.location.pathname == '/index.html') {
-
     }
 }
 init();

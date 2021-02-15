@@ -1181,9 +1181,9 @@ textarea:invalid {
     .wrapper-product-cards{
         grid-template-columns: repeat(3, 1fr);
     }
-    .wrapper-blog-cards{
-        grid-template-columns: repeat(2, 1fr);
-    }
+    /* .wrapper-blog-cards{
+        grid-template-columns: repeat(6, 3fr);
+    } */
     .blog-article-short{
         margin-bottom: 60px;
     }
@@ -1201,20 +1201,24 @@ textarea:invalid {
         height: 700px;
         margin-top: calc(50vh - 470px);
     }
-    .example-blog-card{
-        grid-column: span 1;
+    /* .example-blog-card{
+        grid-column: span 2;
     }
     .example-blog-card-readmore:nth-child(odd){
-        grid-column: 1 / 3;
+        grid-column: 1 / 5;
         grid-row: span 2;
     }
     .example-blog-card-readmore:nth-child(even){
-        grid-column: 1 / 3;
+        grid-column: 1 / 5;
         grid-row: span 2;
     }
     .example-blog-card-readmore-odd-even {
-        grid-column: span 1;
+        grid-column: span 2;
     }
+    */
+    .wrapper-blog-article-short {
+        overflow: scroll;
+    } 
 }
 
 @media screen and (max-width: 850px) {
@@ -1353,9 +1357,6 @@ textarea:invalid {
     }
     .blog-input-form {
         margin-top: calc(50vh - 440px);
-    }
-    .wrapper-blog-article-short {
-        overflow: scroll;
     }
 }
 @media screen and (max-width: 770px) {
@@ -1502,7 +1503,7 @@ textarea:invalid {
         height: 21px;
     }
     .wrapper-blog-cards{
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: repeat(2, 2fr);
     }
     .example-blog-card{
         height: auto;
@@ -1584,11 +1585,17 @@ textarea:invalid {
         padding: 0px;
     }
     .blog-body-article {
-        height: 195px;
+        height: 120px;
     }
     .blog-input-form {
-        height: 600px;
-        margin-top: calc(50vh - 325px);
+        height: 510px;
+        margin-top: calc(50vh - 300px);
+    }
+    .image-upload-wrap {
+        height: 180px;
+    }
+    .image-input-title-mobile {
+        margin-top: 80px;
     }
     .wrapper-assets-items {
         padding: 0 10px;
@@ -1619,6 +1626,9 @@ textarea:invalid {
     }
     .see-more-link-active {
         max-height: 3000px;
+    }
+    .example-blog-card:nth-child(1n) {
+        grid-column: span 2;
     }
 }
 @media screen and (max-width: 350px) {
@@ -1681,17 +1691,17 @@ textarea:invalid {
         font-size: 10px;
     }
     .blog-body-article {
-        height: 145px;
+        height: 105px;
     }
     .image-upload-wrap {
-        height: 150px;
+        height: 120px;
     }
     .image-input-title-mobile {
-        margin-top: 70px;
+        margin-top: 50px;
     }
     .blog-input-form {
-        height: 500px;
-        margin-top: calc(50vh - 270px);
+        height: 430px;
+        margin-top: calc(50vh - 250px);
     }
     .wrapper-content{
         width: 300px;

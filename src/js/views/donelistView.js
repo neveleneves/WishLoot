@@ -29,7 +29,7 @@ class DonelistView extends View {
             <div class="example-product-card" id="#${dataCard.id}">
                 <div class="product-image">
                     <a href="https://stockx.com/${dataCard.id}" class="product-link">
-                        <img src="${dataCard.image_url}" alt="${dataCard.name}" class="">
+                        <img src="${dataCard.image_url_small}" alt="${dataCard.name}" class="">
                     </a>
                 </div>
                 <div class="wrapper-product-title">
