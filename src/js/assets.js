@@ -43,7 +43,7 @@
 
 //Typing-carousel control
 (function(){
-    if (window.location.pathname == '/') {
+    if (window.location.pathname == '/' || window.location.pathname == '/index.html') {
         const TxtRotate = function(el, toRotate, period) {
             this.toRotate = toRotate;
             this.el = el;

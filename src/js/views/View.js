@@ -28,8 +28,15 @@ export default class View {
 
     //Handler for Seemore link 
     assetsSeemore(){
-        this._sectionTarget.querySelector('.see-more-link').addEventListener('click', () => {
+        const seemoreLink = this._sectionTarget.querySelector('.see-more-link');
+
+        seemoreLink.addEventListener('click', () => {
             this._sectionCards.classList.toggle('see-more-link-active');
+
+            if (this._sectionCards.classList.contains('see-more-link-active'))
+            seemoreLink.textContent = 'Hide list';
+            else 
+            seemoreLink.textContent = 'See more';
         });
     }
 
