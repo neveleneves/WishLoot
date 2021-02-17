@@ -10,3 +10,4 @@ Stack of project:
 * AJAX, REST API
 * Webpack, Babel
 * MVC
+* StockX API 
